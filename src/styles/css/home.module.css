@@ -1,0 +1,3 @@
+.banner::before {
+  background: url(../../assets/img/banner-shape.png) no-repeat center; 
+}
