@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import './styles/font/index.css';
+@import './styles/icon/icon.css';
 
 * {
   padding: 0;
