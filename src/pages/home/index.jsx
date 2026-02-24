@@ -3,6 +3,7 @@ import HomeCategories from "./components/HomeCategories";
 import Services from "./components/services/Services";
 import BannerServices from "./components/services/BannerServices";
 import SingleBanner from "../../assets/img/06.jpg";
+import NewProductsSlider from "./components/NewProucts/NewProductsSlider";
 const HomePage = () => {
   return (
     <div className="container mx-auto space-y-5 md:space-y-20">
@@ -10,13 +11,18 @@ const HomePage = () => {
         <div className="col-span-12 md:col-span-4">
           <HomeCategories />
           <div className="overflow-hidden">
-            <img src={SingleBanner} alt={SingleBanner} className="mt-5 hover:scale-105 transition-all delay-75" />
+            <img
+              src={SingleBanner}
+              alt={SingleBanner}
+              className="mt-5 hover:scale-105 transition-all delay-75"
+            />
           </div>
         </div>
         <BannerSlider />
       </div>
       <Services />
-      <BannerServices  />
+      <BannerServices />
+      <NewProductsSlider />
     </div>
   );
 };
