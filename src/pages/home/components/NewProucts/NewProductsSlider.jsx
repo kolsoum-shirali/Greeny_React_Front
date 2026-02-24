@@ -20,7 +20,7 @@ const products = [
 export default function NewProductsSlider() {
   return (
     <div>
-      <h1 className="text-center text-4xl">محصولات تازه روز</h1>
+      <h1 className="text-center text-2xl lg:text-4xl">محصولات تازه روز</h1>
       <div className="relative">
         <Swiper
           navigation={{
@@ -32,7 +32,7 @@ export default function NewProductsSlider() {
             clickable: true,
           }}
           modules={[Navigation, Autoplay, Pagination]} 
-          className="mt-10"
+          className="mt-5 lg:mt-10"
           loop
           autoplay={{
             delay: 3000,
