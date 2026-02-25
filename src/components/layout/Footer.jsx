@@ -3,7 +3,7 @@ import EasyAccess from "./EasyAccess";
 import FooteDesc from "./FooteDesc";
 export default function Footer() {
   return (
-    <div className="shadow-md border-t border-gray-400/20 mt-20">
+    <div className="border-t border-gray-400/20 mt-20">
       <div className="container mx-auto pt-7 lg:pt-14">
         <div className="grid grid-cols-12  gap-y-7 lg:gap-10">
           <FooteDesc />
