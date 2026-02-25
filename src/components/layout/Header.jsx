@@ -1,8 +1,12 @@
-
+import TopHeader from "./TopHeader";
+import DesktopMenubar from "./DesktopMenubar";
 export default function ChatRoom() {
   return (
-    <>
-      <h1>Welcome to the room!</h1>
-    </>
+    <div className="shadow-md">
+      <div className="container mx-auto">
+        <TopHeader />
+        <DesktopMenubar />
+      </div>
+    </div>
   );
 }
