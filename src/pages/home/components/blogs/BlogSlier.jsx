@@ -1,10 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import BlogCard from "./BlogCard";
-import blog1 from "../../../../assets/img/01.png";
-import blog2 from "../../../../assets/img/01.png";
-import blog3 from "../../../../assets/img/04.jpg";
-import blog4 from "../../../../assets/img/03.png";
+import blog1 from "../../../../assets/img/Products/1.webp";
+import blog2 from "../../../../assets/img/Products/2.jpg";
+import blog3 from "../../../../assets/img/Products/3.jpg";
+import blog4 from "../../../../assets/img/Products/4.jpg";
 
 const blogs = [
   {

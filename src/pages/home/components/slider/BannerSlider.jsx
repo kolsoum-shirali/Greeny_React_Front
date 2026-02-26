@@ -1,7 +1,7 @@
 import BannerCard from "./BannerCard";
-import banner1 from "../../../../assets/img/01.png";
-import banner2 from "../../../../assets/img/02.png";
-import banner3 from "../../../../assets/img/03.png";
+import banner1 from "../../../../assets/img/Products/1.webp";
+import banner2 from "../../../../assets/img/Products/2.jpg";
+import banner3 from "../../../../assets/img/Products/3.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";

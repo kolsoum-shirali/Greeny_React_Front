@@ -1,20 +1,24 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import SingleProduct from "./SingleProduct";
-import product1 from "../../../../assets/img/05.jpg";
-import product2 from "../../../../assets/img/01.png";
-import product3 from "../../../../assets/img/04.jpg";
-import product4 from "../../../../assets/img/03.png";
+import product1 from "../../../../assets/img/Products/1.webp";
+import product2 from "../../../../assets/img/Products/2.jpg";
+import product3 from "../../../../assets/img/Products/3.jpg";
+import product4 from "../../../../assets/img/Products/4.jpg";
+import product5 from "../../../../assets/img/Products/5.jpeg";
+import product6 from "../../../../assets/img/Products/6.jpg";
+import product7 from "../../../../assets/img/Products/7.jpg";
+import product8 from "../../../../assets/img/Products/8.jpg";
 
 const products = [
   { img: product1 },
   { img: product2 },
   { img: product3 },
   { img: product4 },
-  { img: product1 },
-  { img: product2 },
-  { img: product3 },
-  { img: product4 },
+  { img: product5 },
+  { img: product6 },
+  { img: product7 },
+  { img: product8 },
 ];
 
 export default function NewProductsSlider() {
@@ -31,7 +35,7 @@ export default function NewProductsSlider() {
             type: "bullets",
             clickable: true,
           }}
-          modules={[Navigation, Autoplay, Pagination]} 
+          modules={[Navigation, Autoplay, Pagination]}
           className="mt-5 lg:mt-10"
           loop
           autoplay={{

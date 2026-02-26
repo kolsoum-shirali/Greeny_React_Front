@@ -9,7 +9,13 @@ export default function SingleProduct({ product }) {
             مشاهده <i className="icon-eye"></i>
           </button>
         </div>
-        <img src={product.img} alt="" className="w-full h-[300px] pb-2" />
+        <div className="h-72 overflow-hidden flex justify-center pb-2">
+          <img
+            src={product.img}
+            alt=""
+            className="w-full h-auto object-cover"
+          />
+        </div>
       </div>
       <div className="py-5 border-t border-t-gray-400/40">
         <div className="flex justify-center gap-1">

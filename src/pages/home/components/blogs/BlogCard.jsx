@@ -1,7 +1,9 @@
 export default function BlogCard({ blog }) {
   return (
     <div className="shadow-sm p-4 border border-gray-400/20">
-      <img src={blog.img} alt="" className="w-full h-[300px] pb-2" />
+     <div className="h-72 overflow-hidden flex justify-center items-center pb-2">
+       <img src={blog.img} alt="" className="w-full h-auto " />
+     </div>
       <div className="space-y-3 mt-3">
         <div className="flex gap-2">
           <p className="text-gray-500 text-sm">
