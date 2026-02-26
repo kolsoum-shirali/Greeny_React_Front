@@ -29,6 +29,10 @@ ul {
   list-style: none;
 }
 
+input:focus, textarea:focus, select:focus {
+  outline: 1px solid transparent; 
+}
+
 .swiper-pagination-bullet.swiper-pagination-bullet-active{
 background-color: #16a34a !important;
 }
