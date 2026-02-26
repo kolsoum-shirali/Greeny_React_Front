@@ -45,22 +45,17 @@ export default function DesktopMenubar() {
               {menu.subMenu.length > 0 && <i className="icon-down-open"></i>}
               {menu.subMenu.length > 0 && (
                 <div className="absolute right-0 w-56 bg-white opacity-0 border border-gray-400/20 shadow-md z-10 p-5 invisible transition-all transform translate-y-16 group-hover:translate-y-0 duration-300 ease-in-out delay-150 group-hover:opacity-100 group-hover:visible">
-                  <ul className="space-y-1">
+                  <div>
                     {menu.subMenu.map((item, inx) => {
                       return (
-                        <li
-                          key={inx}
-                          className="text-sm text-gray-500 hover:bg-slate-100 hover:text-green-800 transition-colors cursor-pointer p-2"
-                        >
-                          {item.url ? (
-                            <Link to={item.url}>{item.title}</Link>
-                          ) : (
-                            <span>{item.title}</span>
-                          )}
-                        </li>
+                        <Link key={inx} to={item.url} className="text-sm">
+                          <h6 className="text-gray-500 hover:bg-slate-100 p-2 hover:text-green-800 transition-colors cursor-pointer ">
+                            {item.title}
+                          </h6>
+                        </Link>
                       );
                     })}
-                  </ul>
+                  </div>
                 </div>
               )}
             </li>
