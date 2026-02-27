@@ -4,7 +4,7 @@ import Services from "../../components/common/Services";
 import BannerServices from "./components/services/BannerServices";
 import SingleBanner from "../../assets/img/06.jpg";
 import NewProductsSlider from "./components/NewProucts/NewProductsSlider";
-import BlogSlider from "../blog/BlogSlider";
+import BlogSlider from "../blog/components/BlogSlider";
 import CommentSlider from "./components/comments/CommentSlider";
 const HomePage = () => {
   return (

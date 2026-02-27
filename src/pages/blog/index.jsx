@@ -1,5 +1,5 @@
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
-import BlogCard from "./BlogCard";
+import BlogCard from "./components/BlogCard";
 import blog1 from "../../assets/img/Products/1.webp";
 import blog2 from "../../assets/img/Products/2.jpg";
 import blog3 from "../../assets/img/Products/3.jpg";
@@ -62,12 +62,12 @@ export default function BlogPage() {
       <BreadCrumbsBanner options={options} caption="وبلاگ" />
       <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10 lg:space-y-32">
         <div className="grid grid-cols-12 md:gap-10">
-         <div className="col-span-12 md:col-span-8 space-y-7">
-           {blogs.map((blog, index) => (
-            <BlogCard blog={blog} key={index} />
-          ))}
-         </div>
-         <div className="col-span-12 md:col-span-4"></div>
+          <div className="col-span-12 md:col-span-8 space-y-7">
+            {blogs.map((blog, index) => (
+              <BlogCard blog={blog} key={index} />
+            ))}
+          </div>
+          <div className="col-span-12 md:col-span-4"></div>
         </div>
       </div>
     </div>

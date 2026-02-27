@@ -1,14 +1,14 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import BlogCard from "./BlogCard";
-import blog1 from "../../assets/img/Products/1.webp";
-import blog2 from "../../assets/img/Products/2.jpg";
-import blog3 from "../../assets/img/Products/3.jpg";
-import blog4 from "../../assets/img/Products/4.jpg";
-import blog5 from "../../assets/img/Products/5.jpeg";
-import blog6 from "../../assets/img/Products/6.jpg";
-import blog7 from "../../assets/img/Products/7.jpg";
-import blog8 from "../../assets/img/Products/8.jpg";
+import blog1 from "../../../assets/img/Products/1.webp";
+import blog2 from "../../../assets/img/Products/2.jpg";
+import blog3 from "../../../assets/img/Products/3.jpg";
+import blog4 from "../../../assets/img/Products/4.jpg";
+import blog5 from "../../../assets/img/Products/5.jpeg";
+import blog6 from "../../../assets/img/Products/6.jpg";
+import blog7 from "../../../assets/img/Products/7.jpg";
+import blog8 from "../../../assets/img/Products/8.jpg";
 
 const blogs = [
   {
