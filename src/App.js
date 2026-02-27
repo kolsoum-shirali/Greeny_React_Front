@@ -10,6 +10,7 @@ import {
   ContactUs,
   BlogPage,
   BlogDetail,
+  Profile,
 } from "./pages/index";
 import "./App.css";
 
@@ -17,17 +18,15 @@ function App() {
   return (
     <div className="App bg-Slate-100">
       <Routes>
-        {/* Layout Route for Header and Footer */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
-
           <Route path="*" element={<NotFound />} />
         </Route>
-        {/* Routes without Layout */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
