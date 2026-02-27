@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function BlogCard({ blog }) {
   return (
-    <div className="shadow-sm p-4 border border-gray-400/20 rounded-md">
+    <div className="shadow-sm p-5 border border-gray-400/20 rounded-md">
       <div className="h-72 md:h-96 overflow-hidden flex justify-center pb-2 rounded-md">
         <img
           src={blog.img}
