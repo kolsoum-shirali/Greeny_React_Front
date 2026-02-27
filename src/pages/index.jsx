@@ -7,9 +7,8 @@ export { default as AboutUs } from "./about-us";
 export { default as ContactUs } from "./contact-us";
 export { default as NotFound } from "./notFound";
 export { default as BlogPage } from "./blog";
+export { default as Profile } from "./profile";
 export { default as BlogDetail } from "./blog/BlogDetail";
-
-
 
 /* -- Layout -- */
 export { default as Footer } from "../components/layout/Footer";
