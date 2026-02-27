@@ -13,7 +13,6 @@ import blog5 from "../../assets/img/Products/5.jpeg";
 import blog6 from "../../assets/img/Products/6.jpg";
 import blog7 from "../../assets/img/Products/7.jpg";
 import blog8 from "../../assets/img/Products/8.jpg";
-const pageInfo = { totalPage: 60, perPage: 10 };
 const options = [
   { title: "خانه", link: "/" },
   { title: "وبلاگ", link: "" },
@@ -319,13 +318,13 @@ export default function BlogPage() {
       <BreadCrumbsBanner options={options} caption="وبلاگ" />
       <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10 lg:space-y-32">
         <div className="grid grid-cols-12 md:gap-10">
-          <div className="col-span-12 md:col-span-8">
+          <div className="col-span-12 lg:col-span-8">
             <div className="space-y-7">
               {currentItems.map((blog, index) => (
                 <BlogCard blog={blog} key={index} />
               ))}
             </div>
-            <div className="mt-10">
+            <div className="my-10">
               <Pagination
                 totalItems={blogs.length}
                 itemsPerPage={itemsPerPage}
@@ -334,7 +333,7 @@ export default function BlogPage() {
               />
             </div>
           </div>
-          <div className="col-span-12 md:col-span-4 relative">
+          <div className="col-span-12 lg:col-span-4 relative">
             <div className="sticky inset-0 space-y-7 ">
               <PopularBlogs />
               <FollowUs />
