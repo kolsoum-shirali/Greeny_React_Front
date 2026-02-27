@@ -1,6 +1,7 @@
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import PopularBlogs from "./components/PopularBlogs"
 import BlogCard from "./components/BlogCard";
+import FollowUs from "./components/FollowUs"
 import blog1 from "../../assets/img/Products/1.webp";
 import blog2 from "../../assets/img/Products/2.jpg";
 import blog3 from "../../assets/img/Products/3.jpg";
@@ -68,8 +69,9 @@ export default function BlogPage() {
               <BlogCard blog={blog} key={index} />
             ))}
           </div>
-          <div className="col-span-12 md:col-span-4">
+          <div className="col-span-12 md:col-span-4 space-y-7">
             <PopularBlogs/>
+            <FollowUs/>
           </div>
         </div>
       </div>
