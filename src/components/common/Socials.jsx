@@ -12,7 +12,7 @@ export default function Socials() {
         return (
           <li key={index}>
             <i
-              className={`${social.icon} text-lg lg:text-xl bg-green-600 rounded-full aspect-square p-2 text-white cursor-pointer`}
+              className={`${social.icon} text-lg lg:text-xl bg-green-600  text-white cursor-pointer p-1`}
             ></i>
           </li>
         );
