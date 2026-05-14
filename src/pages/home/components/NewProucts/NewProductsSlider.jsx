@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import SingleProduct from "./SingleProduct";
 import NotExistCard from "../../../../components/common/NotExistCard";
-import ProductLoading from "../../../../components/common/ProductLoading";
+import ProductLoadingSlider from "../../../../components/common/ProductLoadingSlider";
 import { fetchProducts } from "../../../../api/products.api";
 
 export default function NewProductsSlider() {
@@ -43,22 +43,6 @@ export default function NewProductsSlider() {
     };
   }, []);
 
-  // Swiper Configurations
-  const loadingSwiperProps = {
-    modules: [Autoplay],
-    className: "mt-5 lg:mt-10",
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      992: { slidesPerView: 3 },
-      1024: { slidesPerView: 4 },
-    },
-  };
-
   const loadedSwiperProps = {
     navigation: {
       nextEl: "#next-btn-product",
@@ -93,15 +77,7 @@ export default function NewProductsSlider() {
         </div>
       )}
 
-      {loading && !error && (
-        <Swiper {...loadingSwiperProps}>
-          {[...Array(6)].map((_, index) => (
-            <SwiperSlide key={index}>
-              <ProductLoading />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+      {loading && !error && <ProductLoadingSlider />}
 
       {!loading && !error && products.length > 0 && (
         <div className="relative">
