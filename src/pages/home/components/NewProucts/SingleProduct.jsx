@@ -11,7 +11,7 @@ export default function SingleProduct({ product }) {
         </div>
         <div className="h-72 overflow-hidden flex justify-center pb-2">
           <img
-            src={`${process.env.REACT_APP_BASE_URL}${product.img}`} // Assuming img is a relative path from your backend
+            src={`${process.env.REACT_APP_BASE_URL_IMG}${product.img}`} // Assuming img is a relative path from your backend
             alt={product.title}
             className="w-full h-auto object-cover"
           />
