@@ -11,21 +11,23 @@ export default function SingleProduct({ product }) {
         </div>
         <div className="h-72 overflow-hidden flex justify-center pb-2">
           <img
-            src={product.img}
-            alt=""
+            src={`${process.env.REACT_APP_BASE_URL}${product.img}`} // Assuming img is a relative path from your backend
+            alt={product.title}
             className="w-full h-auto object-cover"
           />
         </div>
       </div>
       <div className="py-5 border-t border-t-gray-400/40">
         <div className="flex justify-center gap-1">
-          <Rating />
-          <span className="text-gray-500 text-sm mt-1">(5)</span>
+          <Rating rateVal={product.rate} isReadable={true} />
+          <span className="text-gray-500 text-sm mt-1">({product.rate})</span>
         </div>
         <h4>{product.title}</h4>
         <div>
           <p>
-            <span className="text-red-500 line-through">{product.oldPrice}</span>
+            <span className="text-red-500 line-through">
+              {product.oldPrice}
+            </span>
             <span className="text-gray-500">تومان</span>
           </p>
           <p>
