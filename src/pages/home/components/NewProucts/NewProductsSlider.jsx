@@ -4,7 +4,31 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import SingleProduct from "./SingleProduct";
 import NotExistCard from "../../../../components/common/NotExistCard";
 import ProductLoadingSlider from "../../../../components/common/ProductLoadingSlider";
+import NavigationSlider from "../../../../components/common/NavigationSlider";
 import { fetchProducts } from "../../../../api/products.api";
+const loadedSwiperProps = {
+  navigation: {
+    nextEl: "#next-btn-product",
+    prevEl: "#prev-btn-product",
+  },
+  pagination: {
+    type: "bullets",
+    clickable: true,
+  },
+  modules: [Navigation, Autoplay, Pagination],
+  className: "mt-5 lg:mt-10",
+  loop: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    640: { slidesPerView: 2 },
+    992: { slidesPerView: 3 },
+    1024: { slidesPerView: 4 },
+    1440: { slidesPerView: 5 },
+  },
+};
 
 export default function NewProductsSlider() {
   const [products, setProducts] = useState([]);
@@ -43,30 +67,6 @@ export default function NewProductsSlider() {
     };
   }, []);
 
-  const loadedSwiperProps = {
-    navigation: {
-      nextEl: "#next-btn-product",
-      prevEl: "#prev-btn-product",
-    },
-    pagination: {
-      type: "bullets",
-      clickable: true,
-    },
-    modules: [Navigation, Autoplay, Pagination],
-    className: "mt-5 lg:mt-10",
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      992: { slidesPerView: 3 },
-      1024: { slidesPerView: 4 },
-      1440: { slidesPerView: 5 },
-    },
-  };
-
   return (
     <div>
       <h1 className="text-center text-2xl lg:text-4xl">محصولات تازه روز</h1>
@@ -88,16 +88,7 @@ export default function NewProductsSlider() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="hidden xl:block">
-            <i
-              id="prev-btn-product"
-              className="icon-right-open text-4xl absolute -right-16 top-1/2 z-1 text-green-600 cursor-pointer"
-            ></i>
-            <i
-              id="next-btn-product"
-              className="icon-left-open text-4xl absolute -left-16 top-1/2 z-1 text-green-600 cursor-pointer"
-            ></i>
-          </div>
+          <NavigationSlider navigationId="product" />
         </div>
       )}
 
