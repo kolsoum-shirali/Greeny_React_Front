@@ -1,10 +1,19 @@
-import * as React from "react";
 import Rating from "@mui/material/Rating";
-export default function BasicRating() {
-  const [value, setValue] = React.useState(5);
+
+export default function BasicRating({ rateVal, isReadable, onRatingChange }) {
+  const handleRatingChange = (event, newValue) => {
+    if (onRatingChange) {
+      onRatingChange(newValue);
+    }
+  };
+
   return (
     <div>
-      <Rating value={value} readOnly />
+      <Rating
+        value={rateVal}
+        readOnly={isReadable}
+        onChange={handleRatingChange}
+      />
     </div>
   );
 }
