@@ -1,7 +1,7 @@
 import { baseUrl, defaultHeaders } from "./index.api";
 
 export const fetchProducts = async () => {
-  const response = await fetch(`${baseUrl}/api/products`, {
+  const response = await fetch(`${baseUrl}/products`, {
     method: "GET",
     headers: defaultHeaders,
   });
