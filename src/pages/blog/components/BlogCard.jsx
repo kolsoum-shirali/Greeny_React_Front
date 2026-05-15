@@ -25,7 +25,7 @@ export default function BlogCard({ blog }) {
             {blog.comment} کامنت
           </p>
         </div>
-        <h3 className="text-lg line-clamp-2 font-bold">{blog.title}</h3>
+        <h3 className="text-lg line-clamp-1 font-bold">{blog.title}</h3>
         <p className="text-base line-clamp-3 text-gray-500 text-justify">
           {blog.shortDesc}
         </p>
