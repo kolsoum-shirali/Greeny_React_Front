@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 const options = [
-  { title: "اکانت من" },
-  { title: "تاریخچه خرید" },
-  { title: "رهگیری سفارش" },
-  { title: "ارتباط با ما" },
-  { title: "قوانین" },
+  { title: "اکانت من", link: "/profile" },
+  { title: "تاریخچه خرید", link: "/profile" },
+  { title: "رهگیری سفارش", link: "/profile" },
+  { title: "ارتباط با ما", link: "/about-us" },
+  { title: "تماس با ما", link: "/contact-us" },
 ];
 
 export default function EasyAccess() {
@@ -14,7 +16,12 @@ export default function EasyAccess() {
         {options.map((option, index) => {
           return (
             <div key={index}>
-              <span className="text-sm lg:text-base text-gray-500">{option.title}</span>
+              <Link
+                to={option.link}
+                className="text-sm lg:text-base text-gray-500"
+              >
+                {option.title}
+              </Link>
             </div>
           );
         })}

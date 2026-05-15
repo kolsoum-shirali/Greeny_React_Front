@@ -22,7 +22,7 @@ const Menus = [
     subMenu: [
       { title: "لاگین", url: "/login" },
       { title: "ثبت نام", url: "/register" },
-      { title: "ویرایش حساب کاربری", url: "" }, // assign a URL if needed
+      { title: "ویرایش حساب کاربری", url: "/profile" }, // assign a URL if needed
     ],
   },
 ];

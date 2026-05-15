@@ -45,10 +45,6 @@ export default function BlogDetail() {
     };
 
     loadBlog();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
     return () => {
       isMounted = false;
     };

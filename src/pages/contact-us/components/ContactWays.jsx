@@ -5,7 +5,7 @@ const contactWays = [
     icon: "icon-location-outline",
   },
   { title: "شماره تماس", desc: "09130000000", icon: "icon-phone" },
-  { title: "ایمیل", desc: "contact@example.com", icon: "icon-mail" },
+  { title: "ایمیل", desc: "support@greeny.com", icon: "icon-mail" },
 ];
 export default function ContactWays() {
   return (
