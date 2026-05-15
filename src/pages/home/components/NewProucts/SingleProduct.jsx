@@ -1,13 +1,15 @@
 import Rating from "../../../../components/common/Rating";
-
+import { Link } from "react-router-dom";
 export default function SingleProduct({ product }) {
   return (
     <div className="shadow-sm border border-gray-400/20 p-3">
       <div className="relative group overflow-hidden">
         <div className="absolute inset-x-0 bottom-0 transition-transform bg-gray-500/70 transform translate-y-full group-hover:translate-y-0 duration-300 flex items-center justify-center h-full">
-          <button className="bg-green-600 text-white p-3 md:px-8 rounded-md text-sm lg:text-base hover:bg-white hover:transition-colors hover:text-green-800 border-2 border-green-600">
-            مشاهده <i className="icon-eye"></i>
-          </button>
+          <Link to={`/products/${product.id}`}>
+            <button className="bg-green-600 text-white p-3 md:px-8 rounded-md text-sm lg:text-base hover:bg-white hover:transition-colors hover:text-green-800 border-2 border-green-600">
+              مشاهده <i className="icon-eye"></i>
+            </button>
+          </Link>
         </div>
         <div className="h-72 overflow-hidden flex justify-center pb-2">
           <img

@@ -1,6 +1,5 @@
 import Rating from "../../../../components/common/Rating";
 import { useState } from "react";
-import gril from "../../../../assets/img/gril.jpeg";
 export default function SingleComment({ comment }) {
   const [productRate, setProductRate] = useState();
   const changeProductRate = (newValue) => {
@@ -8,9 +7,9 @@ export default function SingleComment({ comment }) {
   };
 
   return (
-    <div className="relative bg-gray-100 px-10 py-5 rounded-md space-y-3">
-      <p className="text-justify line-clamp-6 text-gray-700 text-base">
-        {comment.desc}
+    <div className="relative bg-gray-100 px-10 py-5 rounded-md space-y-3 min-h-72">
+      <p className="text-justify line-clamp-4 text-gray-700 text-base">
+        {comment.idea}
       </p>
       <div className="flex flex-col justify-center items-center">
         <h3 className="text-sm">{comment.author}</h3>
@@ -19,8 +18,12 @@ export default function SingleComment({ comment }) {
           isReadable={false}
           onRatingChange={changeProductRate}
         />
-        <div className="w-20 h-20 aspect-square rounded-full overflow-hidden">
-          <img src={gril} alt="" />
+        <div className="h-24  flex justify-center ">
+          <img
+            src={`${process.env.REACT_APP_BASE_URL_IMG}${comment.img}`}
+            alt=""
+            className="object-cover rounded-full aspect-square"
+          />
         </div>
       </div>
     </div>
