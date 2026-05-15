@@ -31,7 +31,6 @@ export default function BlogDetail() {
 
         if (isMounted) {
           setBlog(data);
-          console.log(data, "fd");
         }
       } catch (e) {
         console.error("Error fetching blogs:", e.message);
@@ -46,6 +45,10 @@ export default function BlogDetail() {
     };
 
     loadBlog();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     return () => {
       isMounted = false;
     };
@@ -90,9 +93,12 @@ export default function BlogDetail() {
                     dangerouslySetInnerHTML={{ __html: blog.desc }}
                   />
                 </div>
-                <div>
-                  <BlogComments />
-                </div>
+                {blog.commentList && (
+                  <div>
+                    <BlogComments comments={blog.commentList} />
+                  </div>
+                )}
+
                 <div className="shadow-md rounded-md p-5 md:p-10 border border-gray-400/20">
                   <h3 className="text-lg font-semibold mb-5">کامنت بگذارید</h3>
                   <ContactForm />
