@@ -6,7 +6,7 @@ export default function BlogCard({ blog }) {
       <div className="h-72 md:h-96 overflow-hidden flex justify-center pb-2 rounded-md">
         <img
           src={`${process.env.REACT_APP_BASE_URL_IMG}${blog.img}`}
-          alt=""
+          alt={blog.img}
           className="w-full h-auto object-cover rounded-md hover:scale-110 transition-scale duration-500
 "
         />
@@ -30,7 +30,7 @@ export default function BlogCard({ blog }) {
           {blog.shortDesc}
         </p>
         <div className="flex">
-          <Link to="/" className="mr-auto">
+          <Link to={`/blog/${blog.id}`} className="mr-auto">
             <p className="text-green-800 font-semibold hover:bg-green-800 hover:text-white transition-colors duration-100 delay-75 p-3  rounded-md">
               بیشتر بخوانید <i className=" icon-left-big"></i>
             </p>
