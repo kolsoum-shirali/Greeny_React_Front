@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import Pagination from "../../components/common/Pagination";
-import PopularBlogs from "./components/PopularBlogs";
-import BlogCard from "./components/BlogCard";
-import FollowUs from "./components/FollowUs";
+import PopularItems from "../../components/common/PopularItems";
+import MainProductCard from "../../components/common/MainProductCard";
+import FollowUs from "../../components/common/FollowUs";
 import { fetchBlogs } from "../../api/blogs.api";
 import ProductLoading from "../../components/common/ProductLoading";
 const options = [
@@ -78,7 +78,12 @@ export default function BlogPage() {
                 <div>
                   <div className="space-y-7">
                     {currentItems.map((blog, index) => (
-                      <BlogCard blog={blog} key={index} />
+                      <MainProductCard
+                        product={blog}
+                        showHeading={true}
+                        productBasePath="blog"
+                        key={index}
+                      />
                     ))}
                   </div>
                   <div className="my-10">
@@ -95,7 +100,7 @@ export default function BlogPage() {
           </div>
           <div className="col-span-12 lg:col-span-4 relative">
             <div className="sticky inset-0 space-y-7 ">
-              <PopularBlogs />
+              <PopularItems />
               <FollowUs />
             </div>
           </div>
