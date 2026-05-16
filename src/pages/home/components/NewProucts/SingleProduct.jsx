@@ -1,6 +1,12 @@
 import Rating from "../../../../components/common/Rating";
+import { useCart } from "../../../../context/CartContext";
+import AddToCardBtn from "../../../../components/common/AddToCardBtn";
 import { Link } from "react-router-dom";
 export default function SingleProduct({ product }) {
+  const { addToCart, cart } = useCart();
+  const cartItem = cart.find((item) => item.id === product.id);
+  const count = cartItem?.numberOfProduct ?? 0;
+
   return (
     <div className="shadow-sm border border-gray-400/20 p-3">
       <div className="relative group overflow-hidden">
@@ -13,13 +19,13 @@ export default function SingleProduct({ product }) {
         </div>
         <div className="h-72 overflow-hidden flex justify-center pb-2">
           <img
-            src={`${process.env.REACT_APP_BASE_URL_IMG}${product.img}`} // Assuming img is a relative path from your backend
+            src={`${process.env.REACT_APP_BASE_URL_IMG}${product.img}`}
             alt={product.title}
             className="w-full h-auto object-cover"
           />
         </div>
       </div>
-      <div className="py-5 border-t border-t-gray-400/40">
+      <div className="py-5 border-t border-t-gray-400/40 space-y-3">
         <div className="flex justify-center gap-1">
           <Rating rateVal={product.rate} isReadable={true} />
           <span className="text-gray-500 text-sm mt-1">({product.rate})</span>
@@ -37,9 +43,20 @@ export default function SingleProduct({ product }) {
             <span className="text-gray-500">تومان</span>
             <span className="text-gray-500">(کیلو)</span>
           </p>
-          <button className="bg-gray-400 p-3 text-sm text-white w-full rounded-sm hover:bg-green-600 transition-colors delay-75">
-            افزودن <i className="icon-shopping-bag"></i>
-          </button>
+        </div>
+        <div>
+          {count <= 0 ? (
+            <button
+              className="bg-gray-400 p-3 text-sm text-white w-full rounded-sm hover:bg-green-600 transition-colors delay-75"
+              onClick={() => addToCart(product)}
+            >
+              افزودن <i className="icon-shopping-bag"></i>
+            </button>
+          ) : (
+            <div className="pt-1" >
+              <AddToCardBtn product={product} />
+            </div>
+          )}
         </div>
       </div>
     </div>
