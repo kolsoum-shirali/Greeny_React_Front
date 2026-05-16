@@ -53,7 +53,7 @@ export default function ProductsDetail() {
   return (
     <div>
       <BreadCrumbsBanner options={options} caption={product.title} />
-      <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10 lg:space-y-16">
+      <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10 lg:space-y-12">
         <Product product={product} />
         <ProductsInfo product={product} />
         {product.comments && <ProductComments comments={product?.comments} />}
