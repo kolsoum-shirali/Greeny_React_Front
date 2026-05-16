@@ -12,7 +12,7 @@ export { default as BlogDetail } from "./blog/BlogDetail";
 export { default as CreateAds } from "./ads/CreateAds";
 
 export { default as ProductsDetail } from "./products/ProductsDetail";
-
+export { default as Products } from "./products";
 
 
 /* -- Layout -- */
