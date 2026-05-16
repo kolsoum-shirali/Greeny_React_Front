@@ -16,6 +16,7 @@ import {
   ProductsDetail,
   CreateAds,
   Products,
+  CartPage,
 } from "./pages/index";
 import "./App.css";
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductsDetail />} />
           <Route path="/create-ads" element={<CreateAds />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/login" element={<Login />} />
