@@ -22,7 +22,7 @@ export default function TopHeader({ toggleMobileMenu }) {
             ورود
           </Link>
         </div>
-        <Link to="/login" className="shadow-md rounded-sm p-3 relative">
+        <Link to="/cart" className="shadow-md rounded-sm p-3 relative">
           <i className="icon-shopping-bag"></i>
           <span className="bg-green-600 aspect-square rounded-full absolute right-0 -top-2 min-w-6 max-h:h-6 text-center text-white">
             99
