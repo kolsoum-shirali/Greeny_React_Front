@@ -20,7 +20,7 @@ export function CartProvider({ children }) {
         return prev.map((item) =>
           item.id === product.id
             ? { ...item, numberOfProduct: item.numberOfProduct + 1 }
-            : item
+            : item,
         );
       }
 
@@ -28,8 +28,8 @@ export function CartProvider({ children }) {
         ...prev,
         {
           id: product.id,
-          name: product.title,
-          price: product.newPrice,
+          title: product.title,
+          newPrice: product.newPrice,
           numberOfProduct: 1,
           img: product.img,
         },
@@ -47,7 +47,7 @@ export function CartProvider({ children }) {
         return prev.map((item) =>
           item.id === id
             ? { ...item, numberOfProduct: item.numberOfProduct - 1 }
-            : item
+            : item,
         );
       }
 
