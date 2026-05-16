@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import ContactForm from "../../components/common/ContactForm";
-import PopularBlogs from "./components/PopularBlogs";
-import FollowUs from "./components/FollowUs";
+import PopularItems from "../../components/common/PopularItems";
+import FollowUs from "../../components/common/FollowUs";
 import BlogComments from "./components/BlogComments";
 import { fetchSingleBlog } from "../../api/blogs.api";
 import styles from "../../styles/css/blog.module.css";
@@ -104,7 +104,7 @@ export default function BlogDetail() {
           </div>
           <div className="col-span-12 lg:col-span-4 relative">
             <div className="sticky inset-0 space-y-7 ">
-              <PopularBlogs />
+              <PopularItems />
               <FollowUs />
             </div>
           </div>
