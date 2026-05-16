@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-import BlogCard from "./BlogCard";
+import MainProductCard from "../../../components/common/MainProductCard";
 import NotExistCard from "../../../components/common/NotExistCard";
 import ProductLoadingSlider from "../../../components/common/ProductLoadingSlider";
 import NavigationSlider from "../../../components/common/NavigationSlider";
@@ -83,7 +83,11 @@ export default function BlogSlider() {
           <Swiper {...loadedSwiperProps}>
             {blogs.map((blog, index) => (
               <SwiperSlide key={blog.id || index}>
-                <BlogCard blog={blog} />
+                <MainProductCard
+                  product={blog}
+                  showHeading={true}
+                  productBasePath="blog"
+                />
               </SwiperSlide>
             ))}
           </Swiper>
