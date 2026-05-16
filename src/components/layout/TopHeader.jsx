@@ -1,8 +1,10 @@
 import Logo from "../../assets/img/logo.png";
 import Divider from "@mui/material/Divider";
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 export default function TopHeader({ toggleMobileMenu }) {
+  const {cart} = useCart()
   return (
     <div className="flex justify-between items-center p-5 max-lg:fixed top-0 left-0 right-0 z-10 bg-white">
       <i
@@ -25,7 +27,7 @@ export default function TopHeader({ toggleMobileMenu }) {
         <Link to="/cart" className="shadow-md rounded-sm p-3 relative">
           <i className="icon-shopping-bag"></i>
           <span className="bg-green-600 aspect-square rounded-full absolute right-0 -top-2 min-w-6 max-h:h-6 text-center text-white">
-            99
+           {cart.length}
           </span>
         </Link>
       </div>
