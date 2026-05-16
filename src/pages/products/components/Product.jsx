@@ -1,37 +1,11 @@
 import Rating from "../../../components/common/Rating";
 import { useCart } from "../../../context/CartContext";
-
+import AddToCardBtn from "../../../components/common/AddToCardBtn";
 export default function Product({ product }) {
-  const { addToCart, cart, removeFromCart } = useCart();
+  const { addToCart, cart } = useCart();
 
   const cartItem = cart.find((item) => item.id === product.id);
   const count = cartItem?.numberOfProduct ?? 0;
-
-  const actions = [
-    {
-      title: "+",
-      class: "border border-gray-300 cursor-pointer font-bold rounded-md",
-    },
-    {
-      title: count,
-      class: "",
-    },
-    {
-      title: "-",
-      class: "border border-gray-300 cursor-pointer font-bold rounded-md",
-    },
-  ];
-
-  const handleAction = (type) => {
-    switch (type) {
-      case "+":
-        addToCart(product);
-        break;
-      case "-":
-        removeFromCart(product.id);
-        break;
-    }
-  };
 
   return (
     <div className="shadow-md rounded-md p-5 md:p-10 border border-gray-400/20 ">
@@ -75,16 +49,8 @@ export default function Product({ product }) {
                 <i className="icon-shopping-bag"></i> افزودن به سبد خرید
               </button>
             ) : (
-              <div className="shadow-md border px-5 py-3 flex justify-center items-center gap-3 rounded-xl">
-                {actions.map((act, inx) => (
-                  <span
-                    key={inx}
-                    className={`text-xl px-3 py-1 aspect-square flex justify-center items-center ${act.class}`}
-                    onClick={() => handleAction(act.title)}
-                  >
-                    {act.title}
-                  </span>
-                ))}
+              <div className="shadow-md border px-5 py-3">
+                <AddToCardBtn product={product} />
               </div>
             )}
           </div>
