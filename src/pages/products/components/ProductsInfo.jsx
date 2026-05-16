@@ -1,6 +1,6 @@
 export default function ProductsInfo({ product }) {
   return (
-    <div className="space-y-10 lg:space-y-16">
+    <div className="space-y-10 lg:space-y-12">
       <div className="shadow-md rounded-md p-5 md:p-10 border border-gray-400/20">
         <h1 className="text-2xl">توضیحات</h1>
         <p className="text-base text-gray-500 text-justify mt-5">
