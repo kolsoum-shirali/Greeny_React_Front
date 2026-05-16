@@ -1,5 +1,6 @@
 import { Route, Routes, Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { CartProvider } from "./context/CartContext";
 
 import {
   HomePage,
@@ -31,23 +32,25 @@ function App() {
   }, [pathname]);
   return (
     <div className="App bg-Slate-100">
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductsDetail />} />
-          <Route path="/create-ads" element={<CreateAds />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <CartProvider>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductsDetail />} />
+            <Route path="/create-ads" element={<CreateAds />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </CartProvider>
     </div>
   );
 }
