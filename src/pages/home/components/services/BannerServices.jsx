@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Banner1 from "../../../../assets/img/04.jpg";
 import Banner2 from "../../../../assets/img/05.jpg";
 
@@ -8,6 +9,7 @@ const serviceType = [
     btnTitle: "همین الان محصولتو بزار برای فروش",
     class: "",
     img: Banner1,
+    link: "/create-ads?type=1",
   },
   {
     title: "خرید محصولات کشاورزی",
@@ -15,6 +17,7 @@ const serviceType = [
     btnTitle: "همین الان درخواست خرید ثبت کن",
     class: "lg:col-start-8",
     img: Banner2,
+    link: "/create-ads?type=2",
   },
 ];
 
@@ -35,9 +38,11 @@ export default function BannerServices() {
               <p className="text-sm md:text-base lg:text-lg text-justify">
                 {service.desc}
               </p>
-              <button className="bg-green-600 px-5 py-2 rounded-full text-sm lg:text-base hover:bg-white hover:transition-colors hover:text-green-800 border-2 border-green-600">
-                {service.btnTitle}
-              </button>
+              <Link to={service.link}>
+                <button className="bg-green-600 px-5 py-2 rounded-full text-sm lg:text-base hover:bg-white hover:transition-colors hover:text-green-800 border-2 border-green-600">
+                  {service.btnTitle}
+                </button>
+              </Link>
             </div>
           </div>
         </div>
