@@ -17,6 +17,7 @@ const Menus = [
     ],
   },
   { title: "بلاگ ها", url: "/blog", subMenu: [] },
+  { title: "فروشگاه", url: "/products", subMenu: [] },
   { title: "تماس با ما", url: "/contact-us", subMenu: [] },
   { title: "ارتباط با ما", url: "/about-us", subMenu: [] },
   {
