@@ -7,7 +7,7 @@ import FollowUs from "../../components/common/FollowUs";
 import BlogComments from "./components/BlogComments";
 import { fetchSingleBlog } from "../../api/blogs.api";
 import styles from "../../styles/css/blog.module.css";
-import BlogDetailLoading from "./components/BlogDetailLoading";
+import ProductDetailLoading from "../../components/common/ProductDetailLoading";
 import CommentLoading from "../../components/common/CommentLoading";
 export default function BlogDetail() {
   const { id: blogId } = useParams();
@@ -58,7 +58,7 @@ export default function BlogDetail() {
             {loading && !error && (
               <div class="rounded-md border p-4">
                 <div class="animate-pulse space-y-6">
-                  <BlogDetailLoading />
+                  <ProductDetailLoading />
                   <div className="space-y-8">
                     {[...Array(3)].map((_, index) => (
                       <div key={index}>
