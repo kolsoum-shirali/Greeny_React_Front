@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import {Link} from "react-router-dom"
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import Pagination from "../../components/common/Pagination";
 import PopularItems from "../../components/common/PopularItems";
@@ -79,10 +79,18 @@ export default function BlogPage() {
                   <div className="space-y-7">
                     {currentItems.map((blog, index) => (
                       <MainProductCard
+                        key={index}
                         product={blog}
                         showHeading={true}
-                        key={index}
-                      />
+                      >
+                        <div className="flex">
+                          <Link to={`/blog/${blog.id}`} className="mr-auto">
+                            <p className="text-green-800 font-semibold hover:bg-green-800 hover:text-white transition-colors duration-100 delay-75 p-3  rounded-md">
+                              بیشتر بخوانید <i className=" icon-left-big"></i>
+                            </p>
+                          </Link>
+                        </div>
+                      </MainProductCard>
                     ))}
                   </div>
                   <div className="my-10">
