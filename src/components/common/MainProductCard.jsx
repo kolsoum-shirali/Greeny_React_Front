@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
-
 export default function MainProductCardd({
   product,
   showHeading,
-  productBasePath,
+  children,
 }) {
   return (
     <div className="shadow-sm p-5 border border-gray-400/20 rounded-md">
@@ -36,13 +34,7 @@ export default function MainProductCardd({
         <p className="text-base line-clamp-3 text-gray-500 text-justify">
           {product.shortDesc}
         </p>
-        <div className="flex">
-          <Link to={`/${productBasePath}/${product.id}`} className="mr-auto">
-            <p className="text-green-800 font-semibold hover:bg-green-800 hover:text-white transition-colors duration-100 delay-75 p-3  rounded-md">
-              بیشتر بخوانید <i className=" icon-left-big"></i>
-            </p>
-          </Link>
-        </div>
+        {children}
       </div>
     </div>
   );

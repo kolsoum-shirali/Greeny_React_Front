@@ -83,11 +83,15 @@ export default function BlogSlider() {
           <Swiper {...loadedSwiperProps}>
             {blogs.map((blog, index) => (
               <SwiperSlide key={blog.id || index}>
-                <MainProductCard
-                  product={blog}
-                  showHeading={true}
-                  productBasePath="blog"
-                />
+                <MainProductCard product={blog} showHeading={true}>
+                  <div className="flex">
+                    <Link to={`/blog/${blog.id}`} className="mr-auto">
+                      <p className="text-green-800 font-semibold hover:bg-green-800 hover:text-white transition-colors duration-100 delay-75 p-3  rounded-md">
+                        بیشتر بخوانید <i className=" icon-left-big"></i>
+                      </p>
+                    </Link>
+                  </div>
+                </MainProductCard>
               </SwiperSlide>
             ))}
           </Swiper>

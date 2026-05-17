@@ -81,7 +81,6 @@ export default function BlogPage() {
                       <MainProductCard
                         product={blog}
                         showHeading={true}
-                        productBasePath="blog"
                         key={index}
                       />
                     ))}

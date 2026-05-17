@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 const categories = [
-  { title: "خرید محصولات کشاورزی" },
-  { title: "فروش محصولات کشاورزی" },
-  { title: "کار و خدمات کشاورزی" },
-  { title: "تجهیزات و ادوات کشاورزی" },
-  { title: "ملک و زمین کشاورزی" },
+  { title: "فروش محصولات کشاورزی", link: "/create-ads?type=1" },
+  { title: "خرید محصولات کشاورزی", link: "/create-ads?type=2" },
+  { title: "کار و خدمات کشاورزی", link: "" },
+  { title: "تجهیزات و ادوات کشاورزی", link: "" },
+  { title: "ملک و زمین کشاورزی", link: "" },
 ];
 
 export default function HomeCategories() {
@@ -18,7 +19,7 @@ export default function HomeCategories() {
             key={index}
             className="hover:cursor-pointer hover:bg-slate-100 hover:text-green-800 transition-colors p-3 border-b border-b-gray-400/20"
           >
-            {category.title}
+            <Link to={category.link}>{category.title}</Link>
           </li>
         ))}
       </ul>

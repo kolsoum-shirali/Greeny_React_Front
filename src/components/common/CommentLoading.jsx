@@ -6,13 +6,13 @@ export default function CommentLoading() {
         <div className="w-full">
           <div className="space-y-4 md:w-3/12">
             {[...Array(2)].map((_, inx) => (
-              <div kye={inx} class="h-4 rounded bg-gray-200"></div>
+              <div kye={inx} className="h-4 rounded bg-gray-200"></div>
             ))}
           </div>
         </div>
       </div>
       {[...Array(2)].map((_, index) => (
-        <div class="h-4 rounded bg-gray-200" key={index}></div>
+        <div className="h-4 rounded bg-gray-200" key={index}></div>
       ))}
     </div>
   );

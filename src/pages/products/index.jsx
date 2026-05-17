@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-
+import { useCart } from "../../context/CartContext";
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import Pagination from "../../components/common/Pagination";
 import PopularItems from "../../components/common/PopularItems";
 import FollowUs from "../../components/common/FollowUs";
-
+import AddToCardBtn from "../../components/common/AddToCardBtn";
 import MainProductCard from "../../components/common/MainProductCard";
 import { fetchProducts } from "../../api/products.api";
-
+import { Link } from "react-router-dom";
 import ProductLoading from "../../components/common/ProductLoading";
+
 const options = [
   { title: "خانه", link: "/" },
   { title: "فروشگاه", link: "" },
@@ -21,6 +22,7 @@ export default function ProductsPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
+  const { addToCart, cart } = useCart();
 
   const currentItems = products.slice(
     (currentPage - 1) * itemsPerPage,
@@ -32,6 +34,10 @@ export default function ProductsPage() {
   };
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     let isMounted = true;
 
     const loadProducts = async () => {
@@ -59,7 +65,7 @@ export default function ProductsPage() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [currentPage]);
 
   return (
     <div>
@@ -79,23 +85,59 @@ export default function ProductsPage() {
               {!loading && !error && products.length > 0 && (
                 <div>
                   <div className="space-y-7">
-                    {currentItems.map((blog, index) => (
-                      <MainProductCard
-                        product={blog}
-                        showHeading={false}
-                        productBasePath="products"
-                        key={index}
-                      />
-                    ))}
+                    {currentItems.map((product, index) => {
+                      const cartItem = cart.find(
+                        (item) => item.id === product.id,
+                      );
+                      const count = cartItem?.numberOfProduct ?? 0;
+                      return (
+                        <MainProductCard
+                          product={product}
+                          showHeading={false}
+                          key={index}
+                        >
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="col-span-2 md:col-span-1">
+                              {count <= 0 ? (
+                                <button
+                                  className="bg-gray-400 p-4 text-sm text-white w-full rounded-sm hover:bg-green-600 transition-colors delay-75"
+                                  onClick={() => addToCart(product)}
+                                >
+                                  افزودن <i className="icon-shopping-bag"></i>
+                                </button>
+                              ) : (
+                                <div className="pt-1">
+                                  <AddToCardBtn product={product} />
+                                </div>
+                              )}
+                            </div>
+                            <Link
+                              to={`/products/${product.id}`}
+                              className="col-span-2 md:col-span-1"
+                            >
+                              <button className="bg-green-600 text-white p-3 md:px-8 rounded-sm text-sm lg:text-base hover:bg-white hover:transition-colors hover:text-green-800 border-2 border-green-600 w-full">
+                                مشاهده <i className="icon-eye"></i>
+                              </button>
+                            </Link>
+                          </div>
+                        </MainProductCard>
+                      );
+                    })}
                   </div>
+
                   <div className="my-10">
                     <Pagination
                       totalItems={products.length}
                       itemsPerPage={itemsPerPage}
                       onPageChange={handlePageChange}
-                      currentPage={currentPage} // Pass currentPage as a prop
+                      currentPage={currentPage}
                     />
                   </div>
+                </div>
+              )}
+              {error && (
+                <div className="text-center text-red-500 p-5">
+                  خطا در بارگیری محصولات: {error}
                 </div>
               )}
             </div>
