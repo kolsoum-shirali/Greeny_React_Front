@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import Pagination from "../../components/common/Pagination";
 import PopularItems from "../../components/common/PopularItems";
@@ -31,7 +31,10 @@ export default function BlogPage() {
 
   useEffect(() => {
     let isMounted = true;
-
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     const loadBlogs = async () => {
       try {
         setLoading(true);
@@ -57,7 +60,7 @@ export default function BlogPage() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [currentPage]);
 
   return (
     <div>
