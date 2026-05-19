@@ -30,6 +30,7 @@ export function CartProvider({ children }) {
           id: product.id,
           title: product.title,
           newPrice: product.newPrice,
+          oldPrice: product.oldPrice,
           numberOfProduct: 1,
           img: product.img,
         },
