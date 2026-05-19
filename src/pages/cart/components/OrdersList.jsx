@@ -1,6 +1,7 @@
 import { useCart } from "../../../context/CartContext";
 import AddToCardBtn from "../../../components/common/AddToCardBtn";
 import MobileOrdersList from "./MobileOrdersList";
+import PriceCard from "./PriceCard";
 const headTable = [
   { delete: "ویرایش محصول" },
   { preview: "پیش نمایش" },
@@ -10,11 +11,11 @@ const headTable = [
   { sum: "جمع" },
 ];
 
-export default function OrdersList() {
+export default function OrdersList({ setTab }) {
   const { cart } = useCart();
 
   return (
-    <div>
+    <div className="space-y-5">
       {/* ✅ Desktop Table */}
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full border border-gray-300 text-center">
@@ -80,6 +81,13 @@ export default function OrdersList() {
       </div>
       {/* ✅ Mobile Cards */}
       <MobileOrdersList cart={cart} />
+      <PriceCard />
+      <button
+        className="bg-green-600 text-white p-3 md:px-8 rounded-md text-sm lg:text-base hover:bg-white hover:transition-colors hover:text-green-800 border-2 border-green-600"
+        onClick={() => setTab(1)}
+      >
+        ادامه جهت تسویه حساب
+      </button>
     </div>
   );
 }
