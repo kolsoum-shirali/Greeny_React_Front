@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Logo from "../../assets/img/logo.png";
 import { register } from "../../api/auth.api";
 import Detail from "./components/Detail";
+
 const initialFormState = {
   name: "",
   email: "",
@@ -15,35 +16,41 @@ export default function Register() {
   const [form, setForm] = useState(initialFormState);
   const [agree, setAgree] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState(null);
-
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { id, value } = e.target;
+
     setForm((prev) => ({
       ...prev,
       [id]: value,
     }));
-    if (error) {
-      setError(null);
-    }
-  };
+  }, []);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      setIsSubmitting(true);
-      setError(null);
-      const result = await register(JSON.stringify(form));
-      alert(result.message);
-      setAgree(false);
-      setForm(initialFormState);
-    } catch (err) {
-      alert(err.message);
-      setError(err.message || "خطایی در ثبت نام رخ داده است!!!!.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const handleAgreeChange = useCallback((e) => {
+    setAgree(e.target.checked);
+  }, []);
+
+  const handleSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
+
+      if (!agree || isSubmitting) return;
+
+      try {
+        setIsSubmitting(true);
+        const result = await register(JSON.stringify(form));
+        alert(result?.message || "ثبت نام با موفقیت انجام شد");
+
+        setAgree(false);
+        setForm(initialFormState);
+      } catch (err) {
+        const message = err?.message || "خطایی در ثبت نام رخ داده است.";
+        alert(message);
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [agree, form, isSubmitting],
+  );
 
   return (
     <div className="p-3 lg:p-10">
@@ -58,7 +65,7 @@ export default function Register() {
               عضو خانواده بزرگ گرینی شوید!
             </h1>
             <h2 className="text-gray-500 text-base">
-              ثبت نام شما تنها چند دقیقه زمان می برد.
+              ثبت نام شما تنها چند دقیقه زمان می‌برد.
             </h2>
           </div>
 
@@ -106,23 +113,12 @@ export default function Register() {
               <input
                 type="checkbox"
                 checked={agree}
-                onChange={(e) => {
-                  setAgree(e.target.checked);
-                  if (error && e.target.checked) {
-                    // Clear checkbox error if checked
-                    setError(null);
-                  }
-                }}
+                onChange={handleAgreeChange}
               />
               <span className="text-green-800">
                 قبول تمام قوانین و شرایط استفاده
               </span>
             </label>
-
-            {error && (
-              <p className="text-red-500 text-sm text-center">{error}</p>
-            )}
-
             <button
               type="submit"
               disabled={!agree || isSubmitting}
