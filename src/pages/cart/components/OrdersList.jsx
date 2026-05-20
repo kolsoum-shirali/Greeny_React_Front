@@ -1,87 +1,36 @@
+import { useMemo } from "react";
 import { useCart } from "../../../context/CartContext";
-import AddToCardBtn from "../../../components/common/AddToCardBtn";
 import MobileOrdersList from "./MobileOrdersList";
 import PriceCard from "./PriceCard";
-const headTable = [
-  { delete: "ویرایش محصول" },
-  { preview: "پیش نمایش" },
-  { title: "نام محصول" },
-  { newPrice: "قیمت" },
-  { numberOfProduct: "تعداد" },
-  { sum: "جمع" },
-];
-
+import DesktopOrdersList from "./DesktopOrdersList";
 export default function OrdersList({ setTab }) {
   const { cart } = useCart();
+  const priceSummary = useMemo(() => {
+    let sumNewPrice = 0;
+    let sumOldPrice = 0;
+    cart.forEach((order) => {
+      sumNewPrice += order.newPrice * order.numberOfProduct;
+      sumOldPrice += order.oldPrice * order.numberOfProduct;
+    });
+    return {
+      sumOldPrice,
+      sumNewPrice,
+      discount: sumOldPrice - sumNewPrice,
+      payableAmount: sumNewPrice,
+    };
+  }, [cart]); // Dependency array: recalculate only if cart changes
 
+  const priceListItems = [
+    { title: "مجموع با قیمت اصلی :", value: priceSummary.sumOldPrice },
+    { title: "مجموع با قیمت تخفیف خورده :", value: priceSummary.sumNewPrice },
+    { title: "تخفیف شما از این خرید :", value: priceSummary.discount },
+    { title: "مبلغ قابل پرداخت :", value: priceSummary.payableAmount },
+  ];
   return (
     <div className="space-y-5">
-      {/* ✅ Desktop Table */}
-      <div className="hidden md:block overflow-x-auto">
-        <table className="w-full border border-gray-300 text-center">
-          <thead>
-            <tr>
-              {headTable.map((item, index) => {
-                const key = Object.keys(item)[0];
-                return (
-                  <th key={index} className="border p-3 bg-green-100/50">
-                    {item[key]}
-                  </th>
-                );
-              })}
-            </tr>
-          </thead>
-
-          <tbody>
-            {cart.map((order, index) => (
-              <tr key={index} className="border">
-                {headTable.map((head, i) => {
-                  const key = Object.keys(head)[0];
-
-                  if (key === "sum") {
-                    return (
-                      <td key={i} className="border p-2">
-                        {order.newPrice * order.numberOfProduct}
-                      </td>
-                    );
-                  }
-
-                  if (key === "delete") {
-                    return (
-                      <td key={i} className="border p-2">
-                        <AddToCardBtn product={order} />
-                      </td>
-                    );
-                  }
-
-                  if (key === "preview") {
-                    return (
-                      <td key={i} className="p-2 flex justify-center">
-                        <div className="h-24 w-24 overflow-hidden">
-                          <img
-                            src={`${process.env.REACT_APP_BASE_URL_IMG}${order?.img}`}
-                            alt={order?.title}
-                            className="w-full h-full object-cover rounded-md"
-                          />
-                        </div>
-                      </td>
-                    );
-                  }
-
-                  return (
-                    <td key={i} className="border p-2">
-                      {order[key]}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {/* ✅ Mobile Cards */}
-      <MobileOrdersList cart={cart} />
-      <PriceCard />
+      <DesktopOrdersList cart={cart} selectedTab={0} />
+      <MobileOrdersList cart={cart} selectedTab={0} />
+      <PriceCard priceListItems={priceListItems} />
       <button
         className="bg-green-600 text-white p-3 md:px-8 rounded-md text-sm lg:text-base hover:bg-white hover:transition-colors hover:text-green-800 border-2 border-green-600"
         onClick={() => setTab(1)}
