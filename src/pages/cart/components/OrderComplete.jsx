@@ -1,18 +1,22 @@
 import PriceCard from "./PriceCard";
+import DesktopOrdersList from "./DesktopOrdersList";
+import MobileOrdersList from "./MobileOrdersList";
 
-const userInfo = [
-  { title: "نام و نام خانوادگی", value: "سارا بهرامی" },
-  { title: "شماره تلفن", value: "09055211233" },
-  { title: "ایمیل", value: "sara@gmail.com" },
-  {
-    title: "آدرس",
-    value:
-      "اصفهان - میدان امام حسین - نبش کتابخانه مرکزی - مجتمع اریا - پلاک 510",
-  },
-  { title: "کد سفارش شما", value: 850 },
-];
-
-export default function OrderComplete() {
+export default function OrderComplete({ receiptInfo }) {
+  const userInfo = [
+    {
+      title: "نام و نام خانوادگی",
+      value: `${receiptInfo.name} ${receiptInfo.lastName}`,
+    },
+    { title: "شماره تلفن", value: receiptInfo.mobile },
+    { title: "ایمیل", value: receiptInfo.email },
+    {
+      title: "آدرس",
+      value: receiptInfo.address,
+    },
+    { title: "کد سفارش شما", value: receiptInfo._id },
+    { title: "تاریخ ثبت سفارش", value: receiptInfo.createdAt },
+  ];
   return (
     <div>
       <div className="space-y-4">
@@ -37,7 +41,8 @@ export default function OrderComplete() {
             </tbody>
           </table>
         </div>
-
+        <DesktopOrdersList cart={receiptInfo.products} selectedTab={2} />
+        <MobileOrdersList cart={receiptInfo.products} selectedTab={2} />
         <PriceCard />
       </div>
     </div>
