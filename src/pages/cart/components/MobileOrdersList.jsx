@@ -1,6 +1,6 @@
 import AddToCardBtn from "../../../components/common/AddToCardBtn";
 
-export default function MobileOrdersList({ cart }) {
+export default function MobileOrdersList({ cart, selectedTab }) {
   return (
     <div className="md:hidden space-y-4">
       {cart.map((order, index) => (
@@ -23,9 +23,11 @@ export default function MobileOrdersList({ cart }) {
               </p>
             </div>
           </div>
-          <div className="flex justify-end">
-            <AddToCardBtn product={order} />
-          </div>
+          {selectedTab === 0 && (
+            <div className="flex justify-end">
+              <AddToCardBtn product={order} />
+            </div>
+          )}
         </div>
       ))}
     </div>
