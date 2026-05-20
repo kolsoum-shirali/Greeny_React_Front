@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import Logo from "../../assets/img/logo.png";
 import { register } from "../../api/auth.api";
 import Detail from "./components/Detail";
+import { useNavigate } from "react-router-dom";
 
 const initialFormState = {
   name: "",
@@ -13,6 +14,8 @@ const inputClassName =
   "h-11 border border-gray-400/20 focus:border focus:border-green-800/50 px-3 rounded-md placeholder:text-sm text-sm bg-gray-100/50 placeholder:text-gray-500";
 
 export default function Register() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState(initialFormState);
   const [agree, setAgree] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +42,7 @@ export default function Register() {
         setIsSubmitting(true);
         const result = await register(JSON.stringify(form));
         alert(result?.message || "ثبت نام با موفقیت انجام شد");
-
+        navigate("/login");
         setAgree(false);
         setForm(initialFormState);
       } catch (err) {
