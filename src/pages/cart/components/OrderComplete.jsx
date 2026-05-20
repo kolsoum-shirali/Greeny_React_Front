@@ -1,7 +1,6 @@
 import PriceCard from "./PriceCard";
 import DesktopOrdersList from "./DesktopOrdersList";
 import MobileOrdersList from "./MobileOrdersList";
-
 export default function OrderComplete({ receiptInfo }) {
   const userInfo = [
     {
@@ -16,6 +15,19 @@ export default function OrderComplete({ receiptInfo }) {
     },
     { title: "کد سفارش شما", value: receiptInfo._id },
     { title: "تاریخ ثبت سفارش", value: receiptInfo.createdAt },
+  ];
+  let sumNewPrice = 0;
+  let sumOldPrice = 0;
+  receiptInfo?.products?.forEach((order) => {
+    sumNewPrice += order.newPrice * order.numberOfProduct;
+    sumOldPrice += order.oldPrice * order.numberOfProduct;
+  });
+
+  const priceListItems = [
+    { title: "مجموع با قیمت اصلی :", value: sumOldPrice },
+    { title: "مجموع با قیمت تخفیف خورده :", value: sumNewPrice },
+    { title: "تخفیف شما از این خرید :", value: sumOldPrice - sumNewPrice },
+    { title: "مبلغ قابل پرداخت :", value: sumNewPrice },
   ];
   return (
     <div>
@@ -43,7 +55,7 @@ export default function OrderComplete({ receiptInfo }) {
         </div>
         <DesktopOrdersList cart={receiptInfo.products} selectedTab={2} />
         <MobileOrdersList cart={receiptInfo.products} selectedTab={2} />
-        <PriceCard />
+        <PriceCard priceListItems={priceListItems} />
       </div>
     </div>
   );
