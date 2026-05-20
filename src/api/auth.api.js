@@ -10,13 +10,11 @@ export const register = async (userInfo) => {
   if (!response.ok) {
     let errorMessage = "An unknown error occurred.";
     try {
-      const errorData = await response.json();
-      errorMessage =
-        errorData.message || `HTTP error!! status: ${response.status}`;
+      errorMessage = data.message || `HTTP error!! status: ${response.status}`;
     } catch (e) {
       errorMessage = `HTTP error!!! status: ${response.status}`;
     }
-    throw new Error(data.message);
+    throw new Error(errorMessage);
   }
 
   return data;
@@ -32,14 +30,36 @@ export const login = async (userInfo) => {
   if (!response.ok) {
     let errorMessage = "An unknown error occurred.";
     try {
-      const errorData = await response.json();
-      errorMessage =
-        errorData.message || `HTTP error!! status: ${response.status}`;
+      errorMessage = data.message || `HTTP error!! status: ${response.status}`;
     } catch (e) {
       errorMessage = `HTTP error!!! status: ${response.status}`;
     }
-    throw new Error(data.message);
+    throw new Error(errorMessage);
+  } else {
+    await localStorage.setItem("token", data.data.token);
   }
 
   return data;
+};
+
+export const userProfile = async () => {
+  const response = await fetch(`${baseUrl}/user/me`, {
+    method: "GET",
+    headers: {
+      ...defaultHeaders,
+      "x-auth-token": localStorage.getItem("token"),
+    },
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    let errorMessage = "An unknown error occurred.";
+    try {
+      errorMessage = data.message || `HTTP error!! status: ${response.status}`;
+    } catch (e) {
+      errorMessage = `HTTP error!!! status: ${response.status}`;
+    }
+    throw new Error(errorMessage);
+  }
+  localStorage.setItem("user", JSON.stringify(data.data));
+  return data.data;
 };
