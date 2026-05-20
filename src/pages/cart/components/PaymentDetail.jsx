@@ -1,9 +1,9 @@
 import OrderForm from "./OrderForm";
-export default function PaymentDetail({ setTab }) {
+export default function receiptOrders({ setTab, receiptOrders }) {
   return (
     <div>
       <div className="space-y-4">
-        <OrderForm  />
+        <OrderForm finishOrder={receiptOrders} />
         <div className="bg-gray-100/50 p-5 rounded-md space-y-4">
           <h3 className="font-bold">پرداخت نقدی پس از تحویل محصول</h3>
           <p>
