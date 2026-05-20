@@ -1,7 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import Detail from "./components/Detail";
 import Logo from "../../assets/img/logo.png";
-import { login } from "../../api/auth.api";
+import { login, userProfile } from "../../api/auth.api";
+import { useNavigate } from "react-router-dom";
 
 const initialFormState = {
   email: "",
@@ -12,36 +13,41 @@ const inputClassName =
   "h-11 border border-gray-400/20 focus:border focus:border-green-800/50 px-3 rounded-md placeholder:text-sm text-sm bg-gray-100/50 placeholder:text-gray-500";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [form, setForm] = useState(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleChange = useCallback((e) => {
+  const handleChange = (e) => {
     const { id, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [id]: value,
     }));
-  }, []);
+  };
 
-  const handleSubmit = useCallback(
-    async (event) => {
-      event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-      if (isSubmitting) return;
+    if (isSubmitting) return;
 
+    try {
+      setIsSubmitting(true);
+      const result = await login(JSON.stringify(form));
+      alert(result?.message || "ورود موفق بود");
+      setForm(initialFormState);
       try {
-        setIsSubmitting(true);
-        const result = await login(JSON.stringify(form));
-        alert(result?.message || "ورود موفق بود");
-        setForm(initialFormState);
+        await userProfile();
+        navigate("/profile");
+        // alert('با موفقیت وارد حساب کاربری خود شدید.');
       } catch (err) {
-        const message = err?.message || "خطایی در احراز هویت رخ داده است.";
-        alert(message);
-      } finally {
-        setIsSubmitting(false);
+        alert(err.message);
       }
-    },
-    [form, isSubmitting],
-  );
+    } catch (err) {
+      const message = err?.message || "خطایی در احراز هویت رخ داده است.";
+      alert(message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="p-3 lg:p-10">
