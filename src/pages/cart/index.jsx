@@ -11,7 +11,12 @@ const tabs = [
 
 export default function CartPage() {
   const [activeTab, setActiveTab] = useState(0);
-
+  const [receiptInfo, setReceiptInfo] = useState({});
+  const receiptOrders = (value) => {
+    setReceiptInfo(value);
+    console.log(value);
+    setActiveTab(2);
+  };
   return (
     <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10">
       <div
@@ -43,8 +48,12 @@ export default function CartPage() {
       </div>
       <div className="mt-6">
         {activeTab === 0 && <OrdersList setTab={setActiveTab} />}
-        {activeTab === 1 && <PaymentDetail setTab={setActiveTab} />}
-        {activeTab === 2 && <OrderComplete setTab={setActiveTab} />}
+        {activeTab === 1 && (
+          <PaymentDetail setTab={setActiveTab} receiptOrders={receiptOrders} />
+        )}
+        {activeTab === 2 && (
+          <OrderComplete setTab={setActiveTab} receiptInfo={receiptInfo} />
+        )}
       </div>
     </div>
   );
