@@ -3,6 +3,8 @@ import { useCart } from "../../../context/CartContext";
 import MobileOrdersList from "./MobileOrdersList";
 import PriceCard from "./PriceCard";
 import DesktopOrdersList from "./DesktopOrdersList";
+import { Navigate } from "react-router-dom";
+
 export default function OrdersList({ setTab }) {
   const { cart } = useCart();
   const priceSummary = useMemo(() => {
@@ -28,6 +30,7 @@ export default function OrdersList({ setTab }) {
   ];
   return (
     <div className="space-y-5">
+      {!cart.length && <Navigate to="/" replace />}
       <DesktopOrdersList cart={cart} selectedTab={0} />
       <MobileOrdersList cart={cart} selectedTab={0} />
       <PriceCard priceListItems={priceListItems} />
