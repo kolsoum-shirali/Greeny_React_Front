@@ -22,14 +22,6 @@ export default function TopHeader({ toggleMobileMenu }) {
     navigate("/");
     alert("با موفقیت از حساب کاربری خود خارج شدید");
   };
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setToken(localStorage.getItem("token"));
-    };
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
   return (
     <div className="flex justify-between items-center p-5 max-lg:fixed top-0 left-0 right-0 z-10 bg-white">
       <i
