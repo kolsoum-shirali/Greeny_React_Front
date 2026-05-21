@@ -1,6 +1,6 @@
 import Logo from "../../assets/img/logo.png";
 import Divider from "@mui/material/Divider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useState, useEffect } from "react"; // Import hooks
 
@@ -9,6 +9,8 @@ const actions = [
   { title: "ورود", link: "/login" },
 ];
 export default function TopHeader({ toggleMobileMenu }) {
+  const { pathname } = useLocation();
+
   const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem("token"));
 
@@ -54,7 +56,7 @@ export default function TopHeader({ toggleMobileMenu }) {
           )}
         </div>
         <Link
-          to="/cart"
+          to={cart.length ? "/cart" : pathname}
           className="shadow-md rounded-sm p-3 relative flex justify-center items-center"
         >
           <i className="icon-shopping-bag"></i>
