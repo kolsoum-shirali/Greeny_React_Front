@@ -12,8 +12,8 @@ const initialFormState = {
 const inputClassName =
   "h-11 border border-gray-400/20 focus:border focus:border-green-800/50 px-3 rounded-md placeholder:text-sm text-sm bg-gray-100/50 placeholder:text-gray-500";
 
-export default function OrderForm() {
-  const { cart } = useCart();
+export default function OrderForm({ finishOrder }) {
+  const { cart, deleteCart } = useCart();
   const [form, setForm] = useState(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -33,6 +33,8 @@ export default function OrderForm() {
       );
       alert(result?.message || "سفارش ثبت شد");
       setForm(initialFormState);
+      finishOrder(result.data);
+      deleteCart();
     } catch (err) {
       const message = err?.message || "خطایی رخ داده است.";
       alert(message);
