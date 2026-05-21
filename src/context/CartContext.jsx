@@ -55,9 +55,13 @@ export function CartProvider({ children }) {
       return prev.filter((item) => item.id !== id);
     });
   };
-
+  const deleteCart = () => {
+    setCart([]);
+  };
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, deleteCart }}
+    >
       {children}
     </CartContext.Provider>
   );
