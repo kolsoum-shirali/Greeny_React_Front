@@ -14,7 +14,6 @@ export default function CartPage() {
   const [receiptInfo, setReceiptInfo] = useState({});
   const receiptOrders = (value) => {
     setReceiptInfo(value);
-    console.log(value);
     setActiveTab(2);
   };
   return (
