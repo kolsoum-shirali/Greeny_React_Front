@@ -3,6 +3,7 @@ import Detail from "./components/Detail";
 import Logo from "../../assets/img/logo.png";
 import { login, userProfile } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const initialFormState = {
   email: "",
@@ -32,18 +33,18 @@ export default function Login() {
     try {
       setIsSubmitting(true);
       const result = await login(JSON.stringify(form));
-      alert(result?.message || "ورود موفق بود");
+      toast.success(result?.message || "ورود موفق بود");
       setForm(initialFormState);
       try {
         await userProfile();
         navigate("/profile");
-        // alert('با موفقیت وارد حساب کاربری خود شدید.');
+        toast.success("با موفقیت وارد حساب کاربری خود شدید.");
       } catch (err) {
-        alert(err.message);
+        toast.error(err.message);
       }
     } catch (err) {
       const message = err?.message || "خطایی در احراز هویت رخ داده است.";
-      alert(message);
+      toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
