@@ -48,7 +48,7 @@ export default function BlogDetail() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [blogId]);
   return (
     <div>
       <BreadCrumbsBanner options={options} caption={blog.title} />
