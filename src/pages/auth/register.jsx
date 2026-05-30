@@ -3,6 +3,7 @@ import Logo from "../../assets/img/logo.png";
 import { register } from "../../api/auth.api";
 import Detail from "./components/Detail";
 import { useNavigate } from "react-router-dom";
+import {  toast } from "react-toastify";
 
 const initialFormState = {
   name: "",
@@ -41,13 +42,13 @@ export default function Register() {
       try {
         setIsSubmitting(true);
         const result = await register(JSON.stringify(form));
-        alert(result?.message || "ثبت نام با موفقیت انجام شد");
+        toast.success(result?.message || "ثبت نام با موفقیت انجام شد");
         navigate("/login");
         setAgree(false);
         setForm(initialFormState);
       } catch (err) {
         const message = err?.message || "خطایی در ثبت نام رخ داده است.";
-        alert(message);
+        toast.error(message);
       } finally {
         setIsSubmitting(false);
       }
@@ -112,7 +113,7 @@ export default function Register() {
               required
             />
 
-            <label className="flex items-center text-sm gap-2 cursor-pointer">
+            <div className="flex items-center text-sm gap-2">
               <input
                 type="checkbox"
                 checked={agree}
@@ -121,7 +122,7 @@ export default function Register() {
               <span className="text-green-800">
                 قبول تمام قوانین و شرایط استفاده
               </span>
-            </label>
+            </div>
             <button
               type="submit"
               disabled={!agree || isSubmitting}
