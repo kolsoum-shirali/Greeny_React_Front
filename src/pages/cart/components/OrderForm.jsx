@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useCart } from "../../../context/CartContext";
 import { submitOrder } from "../../../api/order.api";
+import { toast } from "react-toastify";
+
 const initialFormState = {
   name: "",
   lastName: "",
@@ -31,13 +33,13 @@ export default function OrderForm({ finishOrder }) {
       const result = await submitOrder(
         JSON.stringify({ ...form, products: cart }),
       );
-      alert(result?.message || "سفارش ثبت شد");
+      toast.success(result?.message || "سفارش ثبت شد")
       setForm(initialFormState);
       finishOrder(result.data);
       deleteCart();
     } catch (err) {
       const message = err?.message || "خطایی رخ داده است.";
-      alert(message);
+      toast.error(message)
     } finally {
       setIsSubmitting(false);
     }

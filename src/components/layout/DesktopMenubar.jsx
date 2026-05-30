@@ -1,5 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function DesktopMenubar() {
   const { pathname } = useLocation();
@@ -13,7 +14,7 @@ export default function DesktopMenubar() {
     localStorage.removeItem("user");
     setToken(null); // Update state to re-render
     navigate("/");
-    alert("با موفقیت از حساب کاربری خود خارج شدید");
+    toast.success("با موفقیت از حساب کاربری خود خارج شدید")
   };
 
   const Menus = [

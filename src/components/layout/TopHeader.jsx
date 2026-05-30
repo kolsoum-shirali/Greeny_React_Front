@@ -3,6 +3,7 @@ import Divider from "@mui/material/Divider";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useState, useEffect } from "react"; // Import hooks
+import { toast } from "react-toastify";
 
 const actions = [
   { title: "عضویت", link: "/register" },
@@ -20,7 +21,7 @@ export default function TopHeader({ toggleMobileMenu }) {
     localStorage.removeItem("user");
     setToken(null);
     navigate("/");
-    alert("با موفقیت از حساب کاربری خود خارج شدید");
+    toast.success("با موفقیت از حساب کاربری خود خارج شدید")
   };
   return (
     <div className="flex justify-between items-center p-5 max-lg:fixed top-0 left-0 right-0 z-10 bg-white">
