@@ -17,7 +17,7 @@ export default function HomeCategories() {
         {categories.map((category, index) => (
           <li
             key={index}
-            className="hover:cursor-pointer hover:bg-slate-100 hover:text-green-800 transition-colors p-3 border-b border-b-gray-400/20"
+            className="hover:bg-slate-100 hover:text-green-800 transition-colors p-3 border-b border-b-gray-400/20"
           >
             <Link to={category.link}>{category.title}</Link>
           </li>
