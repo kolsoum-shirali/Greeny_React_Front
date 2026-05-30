@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-
+const token = localStorage.getItem("token");
 const options = [
-  { title: "اکانت من", link: "/profile" },
-  { title: "تاریخچه خرید", link: "/profile" },
-  { title: "رهگیری سفارش", link: "/profile" },
+  { title: "اکانت من", link: token ? "/profile" : "/register" },
+  { title: "تاریخچه خرید", link: token ? "/profile" : "/register" },
+  { title: "رهگیری سفارش", link: token ? "/profile" : "/register" },
   { title: "درباره ما", link: "/about-us" },
   { title: "تماس با ما", link: "/contact-us" },
 ];
