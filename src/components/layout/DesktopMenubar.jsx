@@ -14,7 +14,7 @@ export default function DesktopMenubar() {
     localStorage.removeItem("user");
     setToken(null); // Update state to re-render
     navigate("/");
-    toast.success("با موفقیت از حساب کاربری خود خارج شدید")
+    toast.success("با موفقیت از حساب کاربری خود خارج شدید");
   };
 
   const Menus = [
@@ -23,8 +23,8 @@ export default function DesktopMenubar() {
       title: "دسته بندی ها",
       url: "",
       subMenu: [
-        { title: "خرید محصولات کشاورزی", url: "/" },
-        { title: "فروش محصولات کشاورزی", url: "/" },
+        { title: "فروش محصولات کشاورزی", url: "/create-ads?type=1" },
+        { title: "خرید محصولات کشاورزی", url: "/create-ads?type=2" },
         { title: "کار و خدمات کشاورزی", url: "/" },
         { title: "تجهیزات و ادوات کشاورزی", url: "/" },
         { title: "ملک و زمین کشاورزی", url: "/" },
@@ -33,7 +33,7 @@ export default function DesktopMenubar() {
     { title: "بلاگ ها", url: "/blog", subMenu: [] },
     { title: "فروشگاه", url: "/products", subMenu: [] },
     { title: "تماس با ما", url: "/contact-us", subMenu: [] },
-    { title: "ارتباط با ما", url: "/about-us", subMenu: [] },
+    { title: "درباره ما", url: "/about-us", subMenu: [] },
     {
       title: "احراز هویت",
       url: "",

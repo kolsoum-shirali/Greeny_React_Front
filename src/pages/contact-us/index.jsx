@@ -4,7 +4,7 @@ import ContactComment from "./components/ContactComment";
 
 const options = [
   { title: "خانه", link: "/" },
-  { title: "ارتباط با ما", link: "" },
+  { title: "درباره ما", link: "" },
 ];
 
 export default function ContactUs() {

@@ -4,7 +4,7 @@ const options = [
   { title: "اکانت من", link: "/profile" },
   { title: "تاریخچه خرید", link: "/profile" },
   { title: "رهگیری سفارش", link: "/profile" },
-  { title: "ارتباط با ما", link: "/about-us" },
+  { title: "درباره ما", link: "/about-us" },
   { title: "تماس با ما", link: "/contact-us" },
 ];
 
