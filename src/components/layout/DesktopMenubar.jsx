@@ -32,7 +32,17 @@ export default function DesktopMenubar() {
     },
     { title: "بلاگ ها", url: "/blog", subMenu: [] },
     { title: "فروشگاه", url: "/products", subMenu: [] },
-    { title: "تماس با ما", url: "/contact-us", subMenu: [] },
+    {
+      title: "آگهی ها",
+      url: "",
+      subMenu: [
+        { title: "آگهی های فروش محصولات کشاورزی", url: "/ads-list?type=1" },
+        { title: "آگهی های خرید محصولات کشاورزی", url: "/ads-list?type=2" },
+        { title: "آگهی های کار و خدمات کشاورزی", url: "/ads-list?type=3" },
+        { title: "آگهی های تجهیزات و ادوات کشاورزی", url: "/ads-list?type=4" },
+        { title: "آگهی های ملک و زمین کشاورزی", url: "/ads-list?type=5" },
+      ],
+    },
     { title: "درباره ما", url: "/about-us", subMenu: [] },
     {
       title: "احراز هویت",
@@ -69,7 +79,7 @@ export default function DesktopMenubar() {
               {menu.subMenu.length > 0 && <i className="icon-down-open"></i>}
 
               {menu.subMenu.length > 0 && (
-                <div className="absolute right-0 w-56 bg-white opacity-0 border border-gray-400/20 shadow-md z-10 p-5 invisible transition-all transform translate-y-16 group-hover:translate-y-0 duration-300 ease-in-out delay-150 group-hover:opacity-100 group-hover:visible">
+                <div className="absolute right-0 w-72 bg-white opacity-0 border border-gray-400/20 shadow-md z-10 p-5 invisible transition-all transform translate-y-16 group-hover:translate-y-0 duration-300 ease-in-out delay-150 group-hover:opacity-100 group-hover:visible">
                   <div>
                     {menu.subMenu.map((item, inx) => {
                       // If this item has the logout flag, render an onClick handler

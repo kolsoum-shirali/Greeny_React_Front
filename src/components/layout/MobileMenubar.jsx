@@ -18,7 +18,17 @@ const Menus = [
   },
   { title: "بلاگ ها", url: "/blog", subMenu: [] },
   { title: "فروشگاه", url: "/products", subMenu: [] },
-  { title: "تماس با ما", url: "/contact-us", subMenu: [] },
+  {
+    title: "آگهی ها",
+    url: "",
+    subMenu: [
+      { title: "آگهی های فروش محصولات کشاورزی", url: "/ads-list?type=1" },
+      { title: "آگهی های خرید محصولات کشاورزی", url: "/ads-list?type=2" },
+      { title: "آگهی های کار و خدمات کشاورزی", url: "/ads-list?type=3" },
+      { title: "آگهی های تجهیزات و ادوات کشاورزی", url: "/ads-list?type=4" },
+      { title: "آگهی های ملک و زمین کشاورزی", url: "/ads-list?type=5" },
+    ],
+  },
   { title: "درباره ما", url: "/about-us", subMenu: [] },
   {
     title: "احراز هویت",
