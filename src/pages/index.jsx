@@ -10,10 +10,10 @@ export { default as BlogPage } from "./blog";
 export { default as Profile } from "./profile";
 export { default as BlogDetail } from "./blog/BlogDetail";
 export { default as CreateAds } from "./ads/CreateAds";
+export { default as AdsList } from "./ads/index";
 export { default as CartPage } from "./cart";
 export { default as ProductsDetail } from "./products/ProductsDetail";
 export { default as Products } from "./products";
-
 
 /* -- Layout -- */
 export { default as Footer } from "../components/layout/Footer";
