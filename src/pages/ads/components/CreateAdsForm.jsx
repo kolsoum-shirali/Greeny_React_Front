@@ -1,17 +1,21 @@
 import { useState, useCallback } from "react";
 import { submitAds } from "../../../api/ads.api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
-const initialFormState = {
-  caption: "",
-  description: "",
-  image: null,
-  minPrice: "",
-  maxPrice: "",
-  type: "",
-};
 export default function CreateAdsForm() {
+  const [searchParams] = useSearchParams();
+  const type = searchParams.get("type");
   const navigate = useNavigate();
+  const initialFormState = {
+    caption: "",
+    description: "",
+    image: null,
+    minPrice: "",
+    maxPrice: "",
+    type: "",
+    pageType: "",
+  };
+
   const [form, setForm] = useState(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -56,7 +60,7 @@ export default function CreateAdsForm() {
         data.append("minPrice", form.minPrice);
         data.append("maxPrice", form.maxPrice);
         data.append("type", form.type);
-
+        data.append("pageType", type);
         const result = await submitAds(data);
         toast.success(result?.message || "آگهی با موفقیت ثبت شد");
         setForm(initialFormState);

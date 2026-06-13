@@ -1,14 +1,10 @@
 import { baseUrl, defaultHeaders } from "./index.api";
 
 export const submitAds = async (userAds) => {
-  // Check if it's FormData
   const isFormData = userAds instanceof FormData;
-
   const response = await fetch(`${baseUrl}/create/ads`, {
     method: "POST",
     headers: {
-      // If it's NOT FormData, use your default headers (which probably includes JSON content-type)
-      // If it IS FormData, do NOT set Content-Type header. Browser handles it.
       ...(isFormData ? {} : defaultHeaders),
     },
     body: userAds,
@@ -20,5 +16,19 @@ export const submitAds = async (userAds) => {
     throw new Error(data.message || `HTTP error! status: ${response.status}`);
   }
 
+  return data;
+};
+export const fetchAllAds = async (typePage) => {
+  const response = await fetch(`${baseUrl}/ads/${typePage}`, {
+    method: "GET",
+    headers: defaultHeaders,
+  });
+  if (!response.ok) {
+    const errorText = await response.statusText;
+    throw new Error(
+      `HTTP error! status: ${response.status}, message: ${errorText}`,
+    );
+  }
+  const { data } = await response.json();
   return data;
 };

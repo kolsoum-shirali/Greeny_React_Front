@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchProducts } from "../../api/products.api";
-
-import blog1 from "../../assets/img/Products/1.webp";
-import blog3 from "../../assets/img/Products/3.jpg";
-import blog2 from "../../assets/img/Products/2.jpg";
-import blog4 from "../../assets/img/Products/4.jpg";
-import blog5 from "../../assets/img/Products/5.jpeg";
 export default function PopularItems() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);

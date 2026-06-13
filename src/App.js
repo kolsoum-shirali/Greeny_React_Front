@@ -18,7 +18,7 @@ import {
   Profile,
   ProductsDetail,
   CreateAds,
-  AdsList,
+  AdsPage,
   Products,
   CartPage,
 } from "./pages/index";
@@ -47,7 +47,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductsDetail />} />
             <Route path="/create-ads" element={<CreateAds />} />
-            <Route path="/ads" element={<AdsList />} />
+            <Route path="/ads" element={<AdsPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="*" element={<NotFound />} />
             

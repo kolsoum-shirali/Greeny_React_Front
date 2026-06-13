@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 const categories = [
-  { title: "فروش محصولات کشاورزی", link: "/create-ads?type=1" },
-  { title: "خرید محصولات کشاورزی", link: "/create-ads?type=2" },
-  { title: "کار و خدمات کشاورزی", link: "" },
-  { title: "تجهیزات و ادوات کشاورزی", link: "" },
-  { title: "ملک و زمین کشاورزی", link: "" },
+  { title: "محصولات کشاورزی", link: "/create-ads?type=1" },
+  { title: "کار و خدمات کشاورزی", link: "/create-ads?type=2" },
+  { title: "تجهیزات و ادوات کشاورزی", link: "/create-ads?type=3" },
+  { title: "ملک و زمین کشاورزی", link: "/create-ads?type=4" },
 ];
 
 export default function HomeCategories() {
