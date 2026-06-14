@@ -12,7 +12,7 @@ export default function AdsCard({ ads }) {
           بیشترین قیمت : <span>{ads.maxPrice}</span>
         </p>
         <p>
-          تاریخ درج آگهی :{" "}
+          تاریخ درج آگهی :
           <span>{moment(ads.createdAt).format("jYYYY/jMM/jDD HH:mm")}</span>
         </p>
       </div>
