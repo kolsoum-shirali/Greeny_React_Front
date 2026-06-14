@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import OrdersList from "./components/OrdersList";
 import UsersList from "./components/UsersList";
-import AdsList from "./components/AdsList";
-
 const options = [
   { title: "خانه", link: "/" },
   { title: "پنل ادمین", link: "" },
