@@ -1,24 +1,26 @@
 export default function OrdersMobileList({ orders }) {
   return (
-    <div className="md:hidden space-y-4">
+    <div className="md:hidden space-y-4 px-2">
       {orders.map((order, index) => (
-        <div key={index} className="border rounded-lg p-4 shadow-sm space-y-5">
-          <div className="flex gap-4">
-            <img
-              src={`${process.env.REACT_APP_BASE_URL_IMG}${order?.img}`}
-              alt={order?.title}
-              className="w-24 h-24 object-cover rounded-md"
-            />
+        <div key={index} className="border border-gray-200 rounded-xl p-4 shadow-sm bg-white flex gap-4">
+          {/* Product Image */}
+          <img
+            src={`${process.env.REACT_APP_BASE_URL_IMG}${order?.img}`}
+            alt={order?.title || "محصول"}
+            className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
+          />
 
-            <div className="flex flex-col justify-between">
-              <h2 className="font-semibold">{order.title}</h2>
-              <p className="text-sm text-gray-500">قیمت: {order.newPrice}</p>
-              <p className="text-sm text-gray-500">
-                تعداد: {order.numberOfProduct}
-              </p>
-              <p className="font-medium">
-                جمع: {order.newPrice * order.numberOfProduct}
-              </p>
+          {/* Details Column */}
+          <div className="flex flex-col justify-between flex-grow overflow-hidden">
+            <h2 className="font-bold text-gray-800 truncate">{order.title}</h2>
+            
+            <div className="text-sm text-gray-500 space-y-0.5">
+              <p>قیمت واحد: {Number(order.newPrice).toLocaleString()} تومان</p>
+              <p>تعداد: {order.numberOfProduct}</p>
+            </div>
+
+            <div className="mt-2 pt-2 border-t border-gray-100 font-bold text-green-700">
+              جمع: {(order.newPrice * order.numberOfProduct).toLocaleString()} تومان
             </div>
           </div>
         </div>
