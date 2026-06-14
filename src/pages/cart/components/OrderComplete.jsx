@@ -1,6 +1,8 @@
 import PriceCard from "./PriceCard";
 import DesktopOrdersList from "./DesktopOrdersList";
 import MobileOrdersList from "./MobileOrdersList";
+import moment from "moment-jalaali";
+
 export default function OrderComplete({ receiptInfo }) {
   const userInfo = [
     {
@@ -14,7 +16,10 @@ export default function OrderComplete({ receiptInfo }) {
       value: receiptInfo.address,
     },
     { title: "کد سفارش شما", value: receiptInfo._id },
-    { title: "تاریخ ثبت سفارش", value: receiptInfo.createdAt },
+    {
+      title: "تاریخ ثبت سفارش",
+      value: moment(receiptInfo.createdAt).format("jYYYY/jMM/jDD - HH:mm:ss"),
+    },
   ];
   let sumNewPrice = 0;
   let sumOldPrice = 0;

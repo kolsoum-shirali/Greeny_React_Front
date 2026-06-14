@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchAllAds } from "../../api/ads.api";
 import { useSearchParams } from "react-router-dom";
 import AdsCard from "./components/AdsCard";
+import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
+
 export default function AdsPage() {
   const [messagePage, setmessagePage] = useState("");
   const [ads, setAllAds] = useState([]);
@@ -9,6 +11,11 @@ export default function AdsPage() {
   const [error, setError] = useState(null);
   const [searchParams] = useSearchParams();
   const typePage = searchParams.get("type");
+  const options = [
+  { title: "خانه", link: "/" },
+  { title: messagePage, link: "" },
+];
+
   useEffect(() => {
     let isMounted = true;
     window.scrollTo({
@@ -55,17 +62,16 @@ export default function AdsPage() {
     };
   }, [searchParams]);
   return (
-    <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10 lg:space-y-32">
-      <div className="text-center font-bold text-xl space-y-4">
-        <h1>گرینی | بازار خرید و فروش عمده محصولات کشاورزی ایران</h1>
-        <p>{messagePage}</p>
-      </div>
-      <div className="grid grid-cols-3 gap-5 ">
-        {ads.map((item, index) => (
-          <div key={index} className="col-span-1">
-            <AdsCard ads={item} />
-          </div>
-        ))}
+    <div>
+      <BreadCrumbsBanner options={options} caption="ثبت آگهی" />
+      <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10 lg:space-y-32">
+        <div className="grid grid-cols-3 gap-5 ">
+          {ads.map((item, index) => (
+            <div key={index} className="col-span-1">
+              <AdsCard ads={item} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

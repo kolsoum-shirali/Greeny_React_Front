@@ -12,6 +12,7 @@ export default function CreateAdsForm() {
     image: null,
     minPrice: "",
     maxPrice: "",
+    mobile: "",
     type: "",
     pageType: "",
   };
@@ -59,6 +60,7 @@ export default function CreateAdsForm() {
         if (form.image) data.append("image", form.image);
         data.append("minPrice", form.minPrice);
         data.append("maxPrice", form.maxPrice);
+        data.append("mobile", form.mobile);
         data.append("type", form.type);
         data.append("pageType", type);
         const result = await submitAds(data);
@@ -154,7 +156,20 @@ export default function CreateAdsForm() {
               className="w-full h-11 border border-gray-400/20 focus:border focus:border-green-800/50 px-3 rounded-md placeholder:text-sm text-sm bg-gray-100/50 placeholder:text-gray-500"
             />
           </div>
-
+          <div className="col-span-2 lg:col-span-1">
+            <p className="mb-1 text-sm lg:text-base">شماره موبایل</p>
+            <input
+              autoComplete="mobile"
+              id="mobile"
+              name="mobile"
+              type="number"
+              value={form.mobile}
+              onChange={handleChange}
+              required
+              placeholder="شماره موبایل خود را وارد کنید"
+              className="w-full h-11 border border-gray-400/20 focus:border focus:border-green-800/50 px-3 rounded-md placeholder:text-sm text-sm bg-gray-100/50 placeholder:text-gray-500"
+            />
+          </div>
           <div className="col-span-2 space-y-4">
             <p className="bg-gray-200/50 p-3 text-sm lg:text-base">
               لطفا نوع آگهی رو انتخاب کنید.

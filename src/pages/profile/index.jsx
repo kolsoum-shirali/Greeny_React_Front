@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import ProfileInfo from "./components/ProfileInfo";
 const options = [
@@ -6,6 +8,13 @@ const options = [
 ];
 
 export default function Profile() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/register");
+    }
+  }, [navigate]);
   return (
     <div>
       <BreadCrumbsBanner options={options} caption="پروفایل" />
