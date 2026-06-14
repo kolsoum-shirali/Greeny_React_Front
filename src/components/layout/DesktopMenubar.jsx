@@ -52,7 +52,7 @@ export default function DesktopMenubar() {
           isLogout: token,
         },
         {
-          title: !token ? "ثبت نام" : "ویرایش حساب کاربری",
+          title: !token ? "ثبت نام" : "پروفایل کاربری",
           url: !token ? "/register" : "/profile",
         },
       ],
