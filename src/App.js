@@ -16,6 +16,7 @@ import {
   BlogPage,
   BlogDetail,
   Profile,
+  Panel,
   ProductsDetail,
   CreateAds,
   AdsPage,
@@ -43,6 +44,8 @@ function App() {
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/panel-admin" element={<Panel />} />
+
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductsDetail />} />

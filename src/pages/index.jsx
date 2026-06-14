@@ -8,6 +8,7 @@ export { default as ContactUs } from "./contact-us";
 export { default as NotFound } from "./notFound";
 export { default as BlogPage } from "./blog";
 export { default as Profile } from "./profile";
+export { default as Panel } from "./panel-admin";
 export { default as BlogDetail } from "./blog/BlogDetail";
 export { default as CreateAds } from "./ads/CreateAds";
 export { default as AdsPage } from "./ads/index";
