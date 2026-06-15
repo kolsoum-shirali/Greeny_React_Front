@@ -6,7 +6,7 @@ export default function AdsCard({ ads }) {
   return (
     <div>
       <div className="grid grid-cols-12 gap-3 p-3 rounded-md border shadow-md">
-        <div className="col-span-5 text-sm flex flex-col space-y-3">
+        <div className="col-span-12 lg:col-span-5 text-sm flex flex-col space-y-3">
           <h3 className="line-clamp-2">{ads.caption}</h3>
 
           <p>
@@ -26,7 +26,7 @@ export default function AdsCard({ ads }) {
             <span>{moment(ads.createdAt).format("jYYYY/jMM/jDD")}</span>
           </p>
         </div>
-        <div className="col-span-7 h-48 rounded-sm flex justify-center overflow-hidden relative">
+        <div className="col-span-12 lg:col-span-7 h-48 rounded-sm flex justify-center overflow-hidden relative">
           <img
             src={`${process.env.REACT_APP_BASE_URL_IMG}/${ads.image}`}
             alt=""
