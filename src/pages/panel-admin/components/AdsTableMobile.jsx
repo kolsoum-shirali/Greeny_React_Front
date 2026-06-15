@@ -43,7 +43,7 @@ export default function AdsTableMobile({ ads, openDialog }) {
               </p>
               <img
                 src={`${process.env.REACT_APP_BASE_URL_IMG}/${adsItem?.image}`}
-                className="w-16 h-16 object-cover rounded-lg mx-auto"
+                className="w-32 h-32 lg:w-16 lg:h-16 object-cover rounded-lg mx-auto"
               />
             </div>
 
