@@ -4,9 +4,6 @@ export default function OrdersTableDesktop({ orders, openDialog }) {
   const headers = ["#", "نام", "موبایل", "ایمیل", "آیدی", "آدرس", "تاریخ", "عملیات"];
 
   return (
-    // We keep 'overflow-x-auto' here because if the table content 
-    // is too wide for the screen, this is the only way to show it 
-    // in full without breaking the layout.
     <div className="hidden lg:block shadow-sm rounded-lg border border-gray-200 overflow-x-auto">
       <table className="w-full text-right border-collapse table-auto min-w-max">
         <thead className="bg-green-600 text-white">

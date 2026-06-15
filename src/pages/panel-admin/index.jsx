@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import OrdersList from "./components/OrdersList";
 import UsersList from "./components/UsersList";
+import AdsList from "./components/AdsList";
 const options = [
   { title: "خانه", link: "/" },
   { title: "پنل ادمین", link: "" },
@@ -11,6 +12,7 @@ const options = [
 const sideBar = [
   { title: "لیست سفارشات", key: "orders" },
   { title: "لیست کاربران", key: "users" },
+  { title: "لیست آگهی ها", key: "ads" },
 ];
 
 export default function Panel() {
@@ -34,6 +36,8 @@ export default function Panel() {
         return <OrdersList />;
       case "users":
         return <UsersList />;
+      case "ads":
+        return <AdsList />;
       default:
         return <OrdersList />;
     }

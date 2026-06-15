@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchAllAds } from "../../api/ads.api";
+import { fetchRelatedAds } from "../../api/ads.api";
 import { useSearchParams } from "react-router-dom";
 import AdsCard from "./components/AdsCard";
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
@@ -45,7 +45,7 @@ export default function AdsPage() {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchAllAds(typePage);
+        const data = await fetchRelatedAds(typePage);
         if (isMounted) setAllAds(data);
       } catch (e) {
         if (isMounted) setError(e.message);
