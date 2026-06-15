@@ -8,100 +8,111 @@ import Pagination from "../../components/common/Pagination";
 export default function AdsPage() {
   const [messagePage, setmessagePage] = useState("");
   const [ads, setAllAds] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(""); // 1. استیت جدید برای جستجو
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchParams] = useSearchParams();
   const typePage = searchParams.get("type");
 
-  const options = [
-    { title: "خانه", link: "/" },
-    { title: messagePage, link: "" },
-  ];
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const currentItems = ads.slice(
+  // 2. فیلتر کردن آگهی‌ها بر اساس caption
+  const filteredAds = ads.filter((ad) =>
+    ad.caption?.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  // 3. محاسبه آیتم‌های صفحه جاری از لیست فیلتر شده
+  const currentItems = filteredAds.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
   );
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Reset page when type changes
+  // Reset page when search or type changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [typePage]);
+  }, [typePage, searchQuery]);
 
   useEffect(() => {
     let isMounted = true;
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
 
     const loadAds = async () => {
       try {
         setLoading(true);
         setError(null);
         const data = await fetchAllAds(typePage);
-        if (isMounted) {
-          setAllAds(data);
-        }
+        if (isMounted) setAllAds(data);
       } catch (e) {
-        console.error("Error fetching ads! ", e.message);
-        if (isMounted) {
-          setError(e.message);
-        }
+        if (isMounted) setError(e.message);
       } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
+        if (isMounted) setLoading(false);
       }
     };
 
     loadAds();
 
-    switch (typePage) {
-      case "1":
-        setmessagePage("تمامی آگهی های محصولات کشاورزی");
-        break;
-      case "2":
-        setmessagePage("تمامی آگهی های کار و خدمات کشاورزی");
-        break;
-      case "3":
-        setmessagePage("تمامی آگهی های تجهیزات و ادوات کشاورزی");
-        break;
-      case "4":
-        setmessagePage("تمامی آگهی های ملک و زمین کشاورزی");
-        break;
-      default:
-        setmessagePage("");
-    }
+    // تنظیم عنوان صفحه
+    const titles = {
+      1: "تمامی آگهی های محصولات کشاورزی",
+      2: "تمامی آگهی های کار و خدمات کشاورزی",
+      3: "تمامی آگهی های تجهیزات و ادوات کشاورزی",
+      4: "تمامی آگهی های ملک و زمین کشاورزی",
+    };
+    setmessagePage(titles[typePage] || "");
 
     return () => {
       isMounted = false;
     };
-  }, [searchParams, typePage, currentPage]);
+  }, [typePage]); // وابستگی به currentPage حذف شد (بهینه سازی)
+
+  const options = [
+    { title: "خانه", link: "/" },
+    { title: messagePage, link: "" },
+  ];
 
   return (
     <div>
       <BreadCrumbsBanner options={options} caption="ثبت آگهی" />
-      <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10 lg:space-y-32">
-        <div className="grid grid-cols-3 gap-5">
-          {currentItems.map((item, index) => (
-            <div key={index} className="col-span-3 lg:col-span-1">
-              <AdsCard ads={item} />
-            </div>
-          ))}
+
+      <div className="container mx-auto p-5 mt-7 md:mt-16 space-y-10">
+        <div className="w-full md:w-1/2">
+          <input
+            type="text"
+            placeholder="جستجو بر اساس عنوان آگهی‌ها..."
+            className="w-full h-11 border border-gray-400/20 focus:border focus:border-green-800/50 px-3 rounded-md placeholder:text-sm text-sm bg-gray-100/50 placeholder:text-gray-500"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
+        {loading ? (
+          <div className="text-center">در حال بارگذاری...</div>
+        ) : (
+          <div className="grid grid-cols-3 gap-5">
+            {currentItems.length > 0 ? (
+              currentItems.map((item, index) => (
+                <div
+                  key={item.id || index}
+                  className="col-span-3 lg:col-span-1"
+                >
+                  <AdsCard ads={item} />
+                </div>
+              ))
+            ) : (
+              <p className="col-span-3 text-center text-gray-500">
+                آگهی یافت نشد.
+              </p>
+            )}
+          </div>
+        )}
 
         <div className="my-10">
           <Pagination
-            totalItems={ads.length}
+            totalItems={filteredAds.length} // استفاده از تعداد آیتم‌های فیلتر شده
             itemsPerPage={itemsPerPage}
             onPageChange={handlePageChange}
             currentPage={currentPage}
