@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import OrdersDialog from "./OrdersDialog";
 import OrdersTableDesktop from "./OrdersTableDesktop";
 import OrdersTableMobile from "./OrdersTableMobile";
+import Pagination from "../../../components/common/Pagination";
 
 export default function OrdersList() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -11,6 +12,19 @@ export default function OrdersList() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  const currentItems = orders.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+  const openDialog = (order) => {
+    setSelectedOrder(order);
+    setIsDialogOpen(true);
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -41,17 +55,20 @@ export default function OrdersList() {
     return () => {
       isMounted = false;
     };
-  }, []);
-
-  const openDialog = (order) => {
-    setSelectedOrder(order);
-    setIsDialogOpen(true);
-  };
+  }, [currentPage]);
 
   return (
     <div>
-      <OrdersTableDesktop orders={orders} openDialog={openDialog} />
-      <OrdersTableMobile orders={orders} openDialog={openDialog} />
+      <OrdersTableDesktop orders={currentItems} openDialog={openDialog} />
+      <OrdersTableMobile orders={currentItems} openDialog={openDialog} />
+      <div className="my-10">
+        <Pagination
+          totalItems={orders.length}
+          itemsPerPage={itemsPerPage}
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+      </div>
       {selectedOrder && (
         <OrdersDialog
           products={selectedOrder.products}
