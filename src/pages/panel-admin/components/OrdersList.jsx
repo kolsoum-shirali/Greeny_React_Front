@@ -12,18 +12,20 @@ export default function OrdersList() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const currentItems = orders.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
-  );
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+
+  // NEW: search by order name
+  const [searchByName, setSearchByName] = useState("");
+
   const openDialog = (order) => {
     setSelectedOrder(order);
     setIsDialogOpen(true);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   useEffect(() => {
@@ -51,24 +53,53 @@ export default function OrdersList() {
     };
 
     loadOrders();
-
     return () => {
       isMounted = false;
     };
-  }, [currentPage]);
+  }, []);
+
+  // Filter orders by name
+  const filteredOrders = orders.filter((order) => {
+    if (!searchByName.trim()) return true;
+
+    const orderName = String(order.name ?? "").toLowerCase();
+    return orderName.includes(searchByName.trim().toLowerCase());
+  });
+
+  // Reset to page 1 when searching
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchByName]);
+
+  const currentItems = filteredOrders.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
 
   return (
     <div>
+      <div className="mb-4">
+        <input
+          type="text"
+          value={searchByName}
+          onChange={(e) => setSearchByName(e.target.value)}
+          placeholder="جستجو بر اساس نام کاربر..."
+          className="w-full lg:w-1/2  h-11 border border-gray-400/20 focus:border focus:border-green-800/50 px-3 rounded-md placeholder:text-sm text-sm bg-gray-100/50 placeholder:text-gray-500"
+        />
+      </div>
+
       <OrdersTableDesktop orders={currentItems} openDialog={openDialog} />
       <OrdersTableMobile orders={currentItems} openDialog={openDialog} />
+
       <div className="my-10">
         <Pagination
-          totalItems={orders.length}
+          totalItems={filteredOrders.length}
           itemsPerPage={itemsPerPage}
           onPageChange={handlePageChange}
           currentPage={currentPage}
         />
       </div>
+
       {selectedOrder && (
         <OrdersDialog
           products={selectedOrder.products}
