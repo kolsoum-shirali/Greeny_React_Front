@@ -62,8 +62,8 @@ export default function ProductsList() {
   const filteredProducts = products.filter((productItem) => {
     if (!searchByTitle.trim()) return true;
 
-    const adsName = String(productItem.title ?? "").toLowerCase();
-    return adsName.includes(searchByTitle.trim().toLowerCase());
+    const productTitle = String(productItem.title ?? "").toLowerCase();
+    return productTitle.includes(searchByTitle.trim().toLowerCase());
   });
 
   // Reset to page 1 when searching
