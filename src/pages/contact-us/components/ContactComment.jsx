@@ -1,4 +1,4 @@
-import ContactForm from "../../../components/common/ContactForm";
+import ContactForm from "./ContactForm";
 import Map from "../../../assets/img/map.png";
 export default function ContactComment() {
   return (
