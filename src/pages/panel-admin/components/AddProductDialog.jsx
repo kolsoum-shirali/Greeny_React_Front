@@ -57,6 +57,7 @@ export default function AddProductDialog({ isOpen, onClose }) {
         data.append("pCode", form.pCode);
         data.append("pType", form.pType);
         data.append("weight", form.weight);
+        data.append("rate", 5);
         const result = await createProduct(data);
         toast.success(result?.message || "محصول با موفقیت ثبت شد");
         setForm(initialFormState);

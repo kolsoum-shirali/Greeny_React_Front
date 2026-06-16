@@ -13,7 +13,7 @@ export default function Product({ product }) {
         <div className="col-span-2 lg:col-span-1">
           <div className="h-72 lg:h-[500px] flex justify-center overflow-hidden">
             <img
-              src={`${process.env.REACT_APP_BASE_URL_IMG}${product?.img}`}
+              src={`${process.env.REACT_APP_BASE_URL_IMG}/${product?.image}`}
               alt={product?.img}
               className="w-full h-auto object-cover rounded-md "
             />

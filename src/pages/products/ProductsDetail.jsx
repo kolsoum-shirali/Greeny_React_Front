@@ -12,7 +12,7 @@ import Product from "./components/Product";
 import { fetchSingleProduct } from "../../api/products.api";
 
 export default function ProductsDetail() {
-  const { id: productId } = useParams();
+  const { code: productCode } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,7 +30,7 @@ export default function ProductsDetail() {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchSingleProduct(productId);
+        const data = await fetchSingleProduct(productCode);
 
         if (isMounted) {
           setProduct(data);
@@ -74,9 +74,9 @@ export default function ProductsDetail() {
           <di className="space-y-10 lg:space-y-12">
             <Product product={product} />
             <ProductsInfo product={product} />
-            {product.comments && (
+            {/* {product.comments && (
               <ProductComments comments={product?.comments} />
-            )}
+            )} */}
             <div className="shadow-md rounded-md p-5 md:p-10 border border-gray-400/20">
               <h3 className="text-lg font-semibold mb-5">
                 نظر خود را اضافه کنید

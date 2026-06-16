@@ -100,14 +100,14 @@ export default function ProductsPage() {
                   <div className="space-y-7">
                     {currentItems.map((product) => {
                       const cartItem = cart.find(
-                        (item) => item.id === product.id,
+                        (item) => item.pCode === product.pCode,
                       );
                       const count = cartItem?.numberOfProduct ?? 0;
                       return (
                         <MainProductCard
                           product={product}
                           showHeading={false}
-                          key={product.id}
+                          key={product.pCode}
                         >
                           <div className="grid grid-cols-2 gap-4">
                             <div className="col-span-2 md:col-span-1">
@@ -125,7 +125,7 @@ export default function ProductsPage() {
                               )}
                             </div>
                             <Link
-                              to={`/products/${product.id}`}
+                              to={`/products/${product.pCode}`}
                               className="col-span-2 md:col-span-1"
                             >
                               <button className="bg-green-600 text-white p-3 md:px-8 rounded-sm text-sm lg:text-base hover:bg-white hover:text-green-800 border-2 border-green-600 w-full transition-all">

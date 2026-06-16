@@ -7,7 +7,7 @@ export default function MainProductCardd({
     <div className="shadow-sm p-5 border border-gray-400/20 rounded-md">
       <div className="h-72 md:h-96 overflow-hidden flex justify-center pb-2 rounded-md">
         <img
-          src={`${process.env.REACT_APP_BASE_URL_IMG}${product.img}`}
+          src={`${process.env.REACT_APP_BASE_URL_IMG}/${product.image}`}
           alt={product.img}
           className="w-full h-auto object-cover rounded-md hover:scale-110 transition-scale duration-500
 "

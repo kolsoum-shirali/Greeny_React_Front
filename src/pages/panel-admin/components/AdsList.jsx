@@ -1,6 +1,6 @@
 import { fetchAllAds } from "../../../api/ads.api";
 import { useState, useEffect } from "react";
-import AdsDialog from "./AdsDialog";
+import DescriptionDialog from "./DescriptionDialog";
 import Pagination from "../../../components/common/Pagination";
 import AdsTableDesktop from "./AdsTableDesktop";
 import AdsTableMobile from "./AdsTableMobile";
@@ -99,8 +99,8 @@ export default function AdsList() {
       </div>
 
       {selectedAds && (
-        <AdsDialog
-          ads={selectedAds}
+        <DescriptionDialog
+          desc={selectedAds.description}
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
         />

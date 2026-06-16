@@ -52,7 +52,7 @@ export default function PopularItems() {
             >
               <div className="col-span-4 h-24 rounded-sm flex justify-center overflow-hidden">
                 <img
-                  src={`${process.env.REACT_APP_BASE_URL_IMG}${blog.img}`}
+                  src={`${process.env.REACT_APP_BASE_URL_IMG}/${blog.image}`}
                   alt={blog.img}
                   className="w-full h-auto rounded-md object-cover"
                 />

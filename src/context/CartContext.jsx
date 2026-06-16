@@ -14,11 +14,11 @@ export function CartProvider({ children }) {
 
   const addToCart = (product) => {
     setCart((prev) => {
-      const exist = prev.find((item) => item.id === product.id);
+      const exist = prev.find((item) => item.pCode === product.pCode);
 
       if (exist) {
         return prev.map((item) =>
-          item.id === product.id
+          item.pCode === product.pCode
             ? { ...item, numberOfProduct: item.numberOfProduct + 1 }
             : item,
         );
@@ -27,7 +27,7 @@ export function CartProvider({ children }) {
       return [
         ...prev,
         {
-          id: product.id,
+          pCode: product.pCode,
           title: product.title,
           newPrice: product.newPrice,
           oldPrice: product.oldPrice,
@@ -38,21 +38,21 @@ export function CartProvider({ children }) {
     });
   };
 
-  const removeFromCart = (id) => {
+  const removeFromCart = (pCode) => {
     setCart((prev) => {
-      const exist = prev.find((item) => item.id === id);
+      const exist = prev.find((item) => item.pCode === pCode);
 
       if (!exist) return prev;
 
       if (exist.numberOfProduct > 1) {
         return prev.map((item) =>
-          item.id === id
+          item.pCode === pCode
             ? { ...item, numberOfProduct: item.numberOfProduct - 1 }
             : item,
         );
       }
 
-      return prev.filter((item) => item.id !== id);
+      return prev.filter((item) => item.pCode !== pCode);
     });
   };
   const deleteCart = () => {

@@ -83,7 +83,7 @@ export default function NewProductsSlider() {
         <div className="relative">
           <Swiper {...loadedSwiperProps}>
             {products.map((product, index) => (
-              <SwiperSlide key={product.id || index}>
+              <SwiperSlide key={product.pCode || index}>
                 <SingleProduct product={product} />
               </SwiperSlide>
             ))}

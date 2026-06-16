@@ -2,7 +2,7 @@ import { useCart } from "../../context/CartContext";
 
 export default function AddToCardBtn({ product }) {
   const { addToCart, cart, removeFromCart } = useCart({ product });
-  const cartItem = cart.find((item) => item.id === product.id);
+  const cartItem = cart.find((item) => item.pCode === product.pCode);
   const count = cartItem?.numberOfProduct ?? 0;
 
   const actions = [
@@ -26,7 +26,7 @@ export default function AddToCardBtn({ product }) {
         addToCart(product);
         break;
       case "-":
-        removeFromCart(product.id);
+        removeFromCart(product.pCode);
         break;
       default:
         console.log("");

@@ -32,8 +32,8 @@ export const fetchProducts = async () => {
   const { data } = await response.json();
   return data;
 };
-export const fetchSingleProduct = async (productId) => {
-  const response = await fetch(`${baseUrl}/products/${productId}`, {
+export const fetchSingleProduct = async (productCode) => {
+  const response = await fetch(`${baseUrl}/products/${productCode}`, {
     method: "GET",
     headers: defaultHeaders,
   });

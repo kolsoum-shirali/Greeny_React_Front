@@ -4,14 +4,14 @@ import AddToCardBtn from "../../../../components/common/AddToCardBtn";
 import { Link } from "react-router-dom";
 export default function SingleProduct({ product }) {
   const { addToCart, cart } = useCart();
-  const cartItem = cart.find((item) => item.id === product.id);
+  const cartItem = cart.find((item) => item.pCode === product.pCode);
   const count = cartItem?.numberOfProduct ?? 0;
 
   return (
     <div className="shadow-sm border border-gray-400/20 p-3">
       <div className="relative group overflow-hidden">
         <div className="absolute inset-x-0 bottom-0 transition-transform bg-gray-500/70 transform translate-y-full group-hover:translate-y-0 duration-300 flex items-center justify-center h-full">
-          <Link to={`/products/${product.id}`}>
+          <Link to={`/products/${product.pCode}`}>
             <button className="bg-green-600 text-white p-3 md:px-8 rounded-md text-sm lg:text-base hover:bg-white hover:transition-colors hover:text-green-800 border-2 border-green-600">
               مشاهده <i className="icon-eye"></i>
             </button>
@@ -19,7 +19,7 @@ export default function SingleProduct({ product }) {
         </div>
         <div className="h-72 overflow-hidden flex justify-center pb-2">
           <img
-            src={`${process.env.REACT_APP_BASE_URL_IMG}${product.img}`}
+            src={`${process.env.REACT_APP_BASE_URL_IMG}/${product.image}`}
             alt={product.title}
             className="w-full h-auto object-cover"
           />
