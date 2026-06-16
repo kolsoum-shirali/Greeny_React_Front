@@ -101,7 +101,7 @@ export default function BlogPage() {
                           showHeading={true}
                         >
                           <div className="flex">
-                            <Link to={`/blog/${blog.id}`} className="mr-auto">
+                            <Link to={`/blog/${blog.numBlog}`} className="mr-auto">
                               <p className="text-green-800 font-semibold hover:bg-green-800 hover:text-white transition-colors duration-100 delay-75 p-3  rounded-md">
                                 بیشتر بخوانید <i className=" icon-left-big"></i>
                               </p>

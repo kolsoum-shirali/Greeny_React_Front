@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchBlogs } from "../../api/blogs.api";
+import moment from "moment-jalaali";
+
 export default function PopularItems() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -47,12 +49,12 @@ export default function PopularItems() {
             className="border-b border-gray-400/20  last:border-0"
           >
             <Link
-              to={`/blog/${blog.id}`}
+              to={`/blog/${blog.numBlog}`}
               className="grid grid-cols-12 gap-3 p-3 rounded-md hover:text-green-800 hover:bg-slate-100 group"
             >
               <div className="col-span-4 h-24 rounded-sm flex justify-center overflow-hidden">
                 <img
-                  src={`${process.env.REACT_APP_BASE_URL_IMG}/${blog.img}`}
+                  src={`${process.env.REACT_APP_BASE_URL_IMG}/${blog.image}`}
                   alt={blog.img}
                   className="w-full h-auto rounded-md object-cover"
                 />
@@ -60,7 +62,7 @@ export default function PopularItems() {
               <div className="col-span-8 text-sm flex flex-col justify-between">
                 <p className="line-clamp-2">{blog.shortDesc}</p>
                 <p className="text-gray-500 group-hover:text-green-800">
-                  5 دی 1405
+                  {moment(blog.createdAt).format("jYYYY/jMM/jDD - HH:mm:ss")}
                 </p>
               </div>
             </Link>

@@ -74,8 +74,8 @@ export default function BlogDetail() {
                 <div className="space-y-5 md:space-y-12">
                   <div className="h-72 md:h-[500px] overflow-hidden flex justify-center rounded-md">
                     <img
-                      src={`${process.env.REACT_APP_BASE_URL_IMG}${blog.img}`}
-                      alt={blog.img}
+                      src={`${process.env.REACT_APP_BASE_URL_IMG}/${blog.image}`}
+                      alt={blog.image}
                       className="w-full h-auto object-cover rounded-md 
 "
                     />
@@ -89,11 +89,11 @@ export default function BlogDetail() {
                     dangerouslySetInnerHTML={{ __html: blog.desc }}
                   />
                 </div>
-                {blog.commentList && (
+                {/* {blog.commentList && (
                   <div>
                     <BlogComments comments={blog.commentList} />
                   </div>
-                )}
+                )} */}
 
                 <div className="shadow-md rounded-md p-5 md:p-10 border border-gray-400/20">
                   <h3 className="text-lg font-semibold mb-5">کامنت بگذارید</h3>

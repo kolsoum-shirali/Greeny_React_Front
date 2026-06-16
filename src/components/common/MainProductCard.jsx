@@ -1,8 +1,6 @@
-export default function MainProductCardd({
-  product,
-  showHeading,
-  children,
-}) {
+import moment from "moment-jalaali";
+
+export default function MainProductCardd({ product, showHeading, children }) {
   return (
     <div className="shadow-sm p-5 border border-gray-400/20 rounded-md">
       <div className="h-72 md:h-96 overflow-hidden flex justify-center pb-2 rounded-md">
@@ -21,11 +19,10 @@ export default function MainProductCardd({
             </p>
             <p className="text-gray-500 text-sm">
               <i className=" icon-calendar text-green-800"></i>
-              {product.date}
+              {moment(product.createdAt).format("jYYYY/jMM/jDD")}
             </p>
             <p className="text-gray-500 text-sm">
-              <i className=" icon-user-o text-green-800"></i>
-              {product.comment} کامنت
+              <i className=" icon-user-o text-green-800"></i>5 کامنت
             </p>
           </div>
         )}

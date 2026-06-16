@@ -1,5 +1,22 @@
 import { baseUrl, defaultHeaders } from "./index.api";
+export const createBlog = async (blog) => {
+  const isFormData = blog instanceof FormData;
+  const response = await fetch(`${baseUrl}/create/blog`, {
+    method: "POST",
+    headers: {
+      ...(isFormData ? {} : defaultHeaders),
+    },
+    body: blog,
+  });
 
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || `HTTP error! status: ${response.status}`);
+  }
+
+  return data;
+};
 export const fetchBlogs = async () => {
   const response = await fetch(`${baseUrl}/blogs`, {
     method: "GET",
@@ -14,8 +31,8 @@ export const fetchBlogs = async () => {
   const { data } = await response.json();
   return data;
 };
-export const fetchSingleBlog = async (blogId) => {
-  const response = await fetch(`${baseUrl}/blogs/${blogId}`, {
+export const fetchSingleBlog = async (blogNum) => {
+  const response = await fetch(`${baseUrl}/blogs/${blogNum}`, {
     method: "GET",
     headers: defaultHeaders,
   });
