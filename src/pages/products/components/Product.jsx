@@ -4,7 +4,7 @@ import AddToCardBtn from "../../../components/common/AddToCardBtn";
 export default function Product({ product }) {
   const { addToCart, cart } = useCart();
 
-  const cartItem = cart.find((item) => item.id === product.id);
+  const cartItem = cart.find((item) => item.pCode === product.pCode);
   const count = cartItem?.numberOfProduct ?? 0;
 
   return (
