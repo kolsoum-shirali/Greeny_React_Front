@@ -57,7 +57,7 @@ export default function DesktopOrdersList({ cart, selectedTab }) {
                     <td key={i} className="p-2 flex justify-center">
                       <div className="h-24 w-24 overflow-hidden">
                         <img
-                          src={`${process.env.REACT_APP_BASE_URL_IMG}${order?.img}`}
+                          src={`${process.env.REACT_APP_BASE_URL_IMG}/${order?.image}`}
                           alt={order?.title}
                           className="w-full h-full object-cover rounded-md"
                         />

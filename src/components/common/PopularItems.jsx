@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { fetchProducts } from "../../api/products.api";
+import { fetchBlogs } from "../../api/blogs.api";
 export default function PopularItems() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ export default function PopularItems() {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchProducts();
+        const data = await fetchBlogs();
         if (isMounted) {
           setBlogs(data);
         }
@@ -52,7 +52,7 @@ export default function PopularItems() {
             >
               <div className="col-span-4 h-24 rounded-sm flex justify-center overflow-hidden">
                 <img
-                  src={`${process.env.REACT_APP_BASE_URL_IMG}/${blog.image}`}
+                  src={`${process.env.REACT_APP_BASE_URL_IMG}/${blog.img}`}
                   alt={blog.img}
                   className="w-full h-auto rounded-md object-cover"
                 />

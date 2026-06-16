@@ -32,7 +32,7 @@ export function CartProvider({ children }) {
           newPrice: product.newPrice,
           oldPrice: product.oldPrice,
           numberOfProduct: 1,
-          img: product.img,
+          image: product.image,
         },
       ];
     });
