@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { submitAds } from "../../../api/ads.api";
+import { createAds } from "../../../api/ads.api";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 export default function CreateAdsForm() {
@@ -63,7 +63,7 @@ export default function CreateAdsForm() {
         data.append("mobile", form.mobile);
         data.append("type", form.type);
         data.append("pageType", type);
-        const result = await submitAds(data);
+        const result = await createAds(data);
         toast.success(result?.message || "آگهی با موفقیت ثبت شد");
         setForm(initialFormState);
       } catch (err) {

@@ -4,6 +4,7 @@ import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
 import OrdersList from "./components/OrdersList";
 import UsersList from "./components/UsersList";
 import AdsList from "./components/AdsList";
+import ProductsList from "./components/ProductsList";
 const options = [
   { title: "خانه", link: "/" },
   { title: "پنل ادمین", link: "" },
@@ -13,6 +14,7 @@ const sideBar = [
   { title: "لیست سفارشات", key: "orders" },
   { title: "لیست کاربران", key: "users" },
   { title: "لیست آگهی ها", key: "ads" },
+  { title: "لیست محصولات", key: "products-list" },
 ];
 
 export default function Panel() {
@@ -38,6 +40,8 @@ export default function Panel() {
         return <UsersList />;
       case "ads":
         return <AdsList />;
+      case "products-list":
+        return <ProductsList />;
       default:
         return <OrdersList />;
     }
@@ -53,7 +57,7 @@ export default function Panel() {
               {sideBar.map((option, inx) => (
                 <li
                   key={inx}
-                  className={`cursor-pointer hover:bg-green-100/40  p-2 ${activeTab === option.key ? "font-bold text-green-600" : ""} ${inx !== 1 ? "border-b" : ""}`}
+                  className={`cursor-pointer hover:bg-green-100/40  p-2 ${activeTab === option.key ? "font-bold text-green-600" : ""} ${inx !== 3 ? "border-b" : ""}`}
                   onClick={() => setActiveTab(option.key)}
                 >
                   {option.title}

@@ -1,6 +1,6 @@
 import { baseUrl, defaultHeaders } from "./index.api";
 
-export const submitAds = async (userAds) => {
+export const createAds = async (userAds) => {
   const isFormData = userAds instanceof FormData;
   const response = await fetch(`${baseUrl}/create/ads`, {
     method: "POST",
