@@ -1,14 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BreadCrumbsBanner from "../../components/common/BreadCrumbsBanner";
-import ContactForm from "../../components/common/ContactForm";
 import PopularItems from "../../components/common/PopularItems";
 import FollowUs from "../../components/common/FollowUs";
-import BlogComments from "./components/BlogComments";
 import { fetchSingleBlog } from "../../api/blogs.api";
 import styles from "../../styles/css/blog.module.css";
 import ProductDetailLoading from "../../components/common/ProductDetailLoading";
-import CommentLoading from "../../components/common/CommentLoading";
 export default function BlogDetail() {
   const { id: blogId } = useParams();
   const [blog, setBlog] = useState([]);
@@ -59,13 +56,6 @@ export default function BlogDetail() {
               <div class="rounded-md border p-4">
                 <div class="animate-pulse space-y-6">
                   <ProductDetailLoading />
-                  <div className="space-y-8">
-                    {[...Array(3)].map((_, index) => (
-                      <div key={index}>
-                        <CommentLoading />
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             )}
@@ -88,16 +78,6 @@ export default function BlogDetail() {
                     className={`${styles["blog-wrap"]} text-gray-500 leading-7 text-justify`}
                     dangerouslySetInnerHTML={{ __html: blog.desc }}
                   />
-                </div>
-                {/* {blog.commentList && (
-                  <div>
-                    <BlogComments comments={blog.commentList} />
-                  </div>
-                )} */}
-
-                <div className="shadow-md rounded-md p-5 md:p-10 border border-gray-400/20">
-                  <h3 className="text-lg font-semibold mb-5">کامنت بگذارید</h3>
-                  <ContactForm />
                 </div>
               </div>
             )}
