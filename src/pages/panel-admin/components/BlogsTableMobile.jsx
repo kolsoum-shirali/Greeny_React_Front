@@ -19,29 +19,18 @@ export default function BlogsTableMobile({ blogs, openDialog }) {
 
             <div className="space-y-1 text-sm border-t pt-3">
               <p className="break-all">
-                <span className="font-semibold text-gray-500">قیمت قبلی:</span>
-                {blogItem.oldPrice}
+                <span className="font-semibold text-gray-500">عنوان:</span>
+                {blogItem.title}
               </p>
               <p className="break-all">
-                <span className="font-semibold text-gray-500">قیمت جدید:</span>
-                {blogItem.newPrice}
-              </p>
-              <p className="break-all">
-                <span className="font-semibold text-gray-500">کد محصول:</span>
-                {blogItem.pCode}
-              </p>
-              <p className="break-all">
-                <span className="font-semibold text-gray-500">وزن:</span>
-                {blogItem.weight}
-              </p>{" "}
-              <p className="break-all">
-                <span className="font-semibold text-gray-500">نوع:</span>
-                {blogItem.pType}
+                <span className="font-semibold text-gray-500">کد وبلاگ:</span>
+                {blogItem.numBlog}
               </p>
               <p className="break-all">
                 <span className="font-semibold text-gray-500">آیدی:</span>
                 {blogItem._id}
               </p>
+            
               <p className="text-gray-500">
                 {moment(blogItem.createdAt).format(
                   "jYYYY/jMM/jDD - HH:mm:ss",

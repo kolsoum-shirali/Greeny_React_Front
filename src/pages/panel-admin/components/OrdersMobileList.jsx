@@ -5,7 +5,7 @@ export default function OrdersMobileList({ orders }) {
         <div key={index} className="border border-gray-200 rounded-xl p-4 shadow-sm bg-white flex gap-4">
           {/* Product Image */}
           <img
-            src={`${process.env.REACT_APP_BASE_URL_IMG}${order?.img}`}
+            src={`${process.env.REACT_APP_BASE_URL_IMG}/${order?.image}`}
             alt={order?.title || "محصول"}
             className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
           />

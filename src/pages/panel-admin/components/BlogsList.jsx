@@ -95,7 +95,7 @@ export default function BlogsList() {
       </div>
 
       <BlogsTableDesktop blogs={currentItems} openDialog={openDialog} />
-      {/* <BlogsTableMobile blogs={currentItems} openDialog={openDialog} /> */}
+      <BlogsTableMobile blogs={currentItems} openDialog={openDialog} />
 
       <div className="my-10">
         <Pagination

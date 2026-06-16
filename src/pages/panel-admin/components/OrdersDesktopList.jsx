@@ -35,7 +35,7 @@ export default function OrdersDesktopList({ orders }) {
                   return (
                     <td key={i} className="p-2">
                       <img
-                        src={`${process.env.REACT_APP_BASE_URL_IMG}/${order?.img}`}
+                        src={`${process.env.REACT_APP_BASE_URL_IMG}/${order?.image}`}
                         alt={order?.title}
                         className="w-12 h-12 object-cover rounded-lg mx-auto"
                       />
